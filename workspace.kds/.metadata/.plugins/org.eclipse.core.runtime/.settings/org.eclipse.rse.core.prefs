@@ -1,4 +1,4 @@
-activeuserprofiles=Cassies-MBP;Team
+activeuserprofiles=Cassies-MBP;Garretts-MBP;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=Cassie
-useridperkey=Cassies-MBP.Local\=Cassie;
+useridperkey=Garretts-MBP.Local\=Cassie;Cassies-MBP.Local\=Cassie;

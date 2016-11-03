@@ -565,11 +565,11 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
                 0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region m_data_2 overflowed with stack and heap)
 OUTPUT(Test.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0xfbd
+.debug_info     0x0000000000000000      0xfc6
  .debug_info    0x0000000000000000      0x1ba ./Sources/main.o
  .debug_info    0x00000000000001ba      0x3a7 ./Project_Settings/Startup_Code/startup.o
- .debug_info    0x0000000000000561       0x9d ./Project_Settings/Startup_Code/startup_MK66F18.o
- .debug_info    0x00000000000005fe      0x9bf ./Project_Settings/Startup_Code/system_MK66F18.o
+ .debug_info    0x0000000000000561       0xa6 ./Project_Settings/Startup_Code/startup_MK66F18.o
+ .debug_info    0x0000000000000607      0x9bf ./Project_Settings/Startup_Code/system_MK66F18.o
 
 .debug_abbrev   0x0000000000000000      0x2ed
  .debug_abbrev  0x0000000000000000       0xc5 ./Sources/main.o
@@ -631,13 +631,13 @@ OUTPUT(Test.elf elf32-littlearm)
  .debug_line    0x00000000000006f4       0x6a ./Project_Settings/Startup_Code/startup_MK66F18.o
  .debug_line    0x000000000000075e      0x3cf ./Project_Settings/Startup_Code/system_MK66F18.o
 
-.debug_str      0x0000000000000000   0x24d56a
- .debug_str     0x0000000000000000   0x24cfbd ./Sources/main.o
-                                     0x24d1cd (size before relaxing)
- .debug_str     0x000000000024cfbd      0x15e ./Project_Settings/Startup_Code/startup.o
-                                     0x24d2d4 (size before relaxing)
- .debug_str     0x000000000024d11b      0x44f ./Project_Settings/Startup_Code/system_MK66F18.o
-                                     0x24d669 (size before relaxing)
+.debug_str      0x0000000000000000   0x24d573
+ .debug_str     0x0000000000000000   0x24cfc6 ./Sources/main.o
+                                     0x24d1d6 (size before relaxing)
+ .debug_str     0x000000000024cfc6      0x15e ./Project_Settings/Startup_Code/startup.o
+                                     0x24d2dd (size before relaxing)
+ .debug_str     0x000000000024d124      0x44f ./Project_Settings/Startup_Code/system_MK66F18.o
+                                     0x24d672 (size before relaxing)
 
 .comment        0x0000000000000000       0x70
  .comment       0x0000000000000000       0x70 ./Sources/main.o
