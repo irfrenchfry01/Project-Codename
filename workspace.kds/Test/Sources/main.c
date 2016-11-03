@@ -37,6 +37,7 @@ int main(void)
 
     /* Write your code here */
 	//Enable high drive strength
+	//Test
 	PORTC_PCR5 = PORT_PCR_MUX(1);
 
     /* This for loop should be replaced. By default this loop allows a single stepping. */

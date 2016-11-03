@@ -1,0 +1,411 @@
+17:38:39 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.elf
+Finished building: Test.siz
+ 
+17:48:16 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.hex
+Finished building: Test.siz
+ 
+17:49:09 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.elf
+Finished building: Test.siz
+ 
+17:51:31 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.elf
+Finished building: Test.siz
+ 
+17:51:39 **** Clean-only build of configuration Debug for project Test ****
+make clean 
+rm -rf  Test.siz  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o  ./Sources/main.d  ./Project_Settings/Startup_Code/startup.d ./Project_Settings/Startup_Code/system_MK66F18.d  ./Project_Settings/Startup_Code/startup_MK66F18.d  Test.elf
+ 
+17:51:45 **** Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -c -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Finished building: ../Project_Settings/Startup_Code/startup.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup_MK66F18.S
+Invoking: Cross ARM GNU Assembler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -x assembler-with-cpp -MMD -MP -MF"Project_Settings/Startup_Code/startup_MK66F18.d" -MT"Project_Settings/Startup_Code/startup_MK66F18.o" -c -o "Project_Settings/Startup_Code/startup_MK66F18.o" "../Project_Settings/Startup_Code/startup_MK66F18.S"
+Finished building: ../Project_Settings/Startup_Code/startup_MK66F18.S
+ 
+Building file: ../Project_Settings/Startup_Code/system_MK66F18.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/system_MK66F18.d" -MT"Project_Settings/Startup_Code/system_MK66F18.o" -c -o "Project_Settings/Startup_Code/system_MK66F18.o" "../Project_Settings/Startup_Code/system_MK66F18.c"
+Finished building: ../Project_Settings/Startup_Code/system_MK66F18.c
+ 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.elf
+Finished building: Test.siz
+ 
+18:02:39 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.hex
+Finished building: Test.siz
+ 
+18:08:52 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -marm -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: error: ./Sources/main.o uses VFP register arguments, Test.hex does not
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file ./Sources/main.o
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: error: ./Project_Settings/Startup_Code/startup.o uses VFP register arguments, Test.hex does not
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file ./Project_Settings/Startup_Code/startup.o
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: error: ./Project_Settings/Startup_Code/system_MK66F18.o uses VFP register arguments, Test.hex does not
+/Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/bin/ld: failed to merge target specific data of file ./Project_Settings/Startup_Code/system_MK66F18.o
+collect2: error: ld returned 1 exit status
+make: *** [Test.hex] Error 1
+18:10:46 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.hex
+Finished building: Test.siz
+ 
+18:11:35 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	Test.hex
+Finished building: Test.siz
+ 
+23:02:07 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+   1732	    108	   2080	   3920	    f50	Test.hex
+Finished building: Test.siz
+ 
+23:23:15 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building target: Test.hex
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.hex"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.hex
+Finished building: Test.siz
+ 
+23:26:27 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.hex"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.hex
+Finished building: Test.siz
+ 
+23:34:58 **** Clean-only build of configuration Debug for project Test ****
+make clean 
+rm -rf  Test.siz  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o  ./Sources/main.d  ./Project_Settings/Startup_Code/startup.d ./Project_Settings/Startup_Code/system_MK66F18.d  ./Project_Settings/Startup_Code/startup_MK66F18.d  Test.hex
+ 
+23:35:13 **** Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -c -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Finished building: ../Project_Settings/Startup_Code/startup.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup_MK66F18.S
+Invoking: Cross ARM GNU Assembler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -x assembler-with-cpp -MMD -MP -MF"Project_Settings/Startup_Code/startup_MK66F18.d" -MT"Project_Settings/Startup_Code/startup_MK66F18.o" -c -o "Project_Settings/Startup_Code/startup_MK66F18.o" "../Project_Settings/Startup_Code/startup_MK66F18.S"
+Finished building: ../Project_Settings/Startup_Code/startup_MK66F18.S
+ 
+Building file: ../Project_Settings/Startup_Code/system_MK66F18.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/system_MK66F18.d" -MT"Project_Settings/Startup_Code/system_MK66F18.o" -c -o "Project_Settings/Startup_Code/system_MK66F18.o" "../Project_Settings/Startup_Code/system_MK66F18.c"
+Finished building: ../Project_Settings/Startup_Code/system_MK66F18.c
+ 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+23:49:00 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+23:52:37 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:05:23 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:06:03 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:06:19 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:11:49 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:12:38 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:13:48 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:18:28 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Test.elf"  "Test.hex"
+Finished building: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
+00:38:13 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+../Sources/main.c: In function 'main':
+../Sources/main.c:41:8: error: lvalue required as left operand of assignment
+  PORTC = 0xFFFFFFFF;
+        ^
+make: *** [Sources/main.o] Error 1
+00:38:30 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+../Sources/main.c: In function 'main':
+../Sources/main.c:41:8: error: lvalue required as left operand of assignment
+  PORTC = 0xFF;
+        ^
+make: *** [Sources/main.o] Error 1
+00:41:20 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Test.elf"  "Test.hex"
+Finished building: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6cc	   0x6c	  0x820	   3928	    f58	Test.elf
+Finished building: Test.siz
+ 
+23:50:53 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6cc	   0x6c	  0x820	   3928	    f58	Test.elf
+Finished building: Test.siz
+ 
+23:51:12 **** Clean-only build of configuration Debug for project Test ****
+make clean 
+rm -rf  Test.siz  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o  ./Sources/main.d  ./Project_Settings/Startup_Code/startup.d ./Project_Settings/Startup_Code/system_MK66F18.d  Test.hex  ./Project_Settings/Startup_Code/startup_MK66F18.d  Test.elf
+ 
+23:58:26 **** Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -c -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Finished building: ../Project_Settings/Startup_Code/startup.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup_MK66F18.S
+Invoking: Cross ARM GNU Assembler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -x assembler-with-cpp -MMD -MP -MF"Project_Settings/Startup_Code/startup_MK66F18.d" -MT"Project_Settings/Startup_Code/startup_MK66F18.o" -c -o "Project_Settings/Startup_Code/startup_MK66F18.o" "../Project_Settings/Startup_Code/startup_MK66F18.S"
+Finished building: ../Project_Settings/Startup_Code/startup_MK66F18.S
+ 
+Building file: ../Project_Settings/Startup_Code/system_MK66F18.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/system_MK66F18.d" -MT"Project_Settings/Startup_Code/system_MK66F18.o" -c -o "Project_Settings/Startup_Code/system_MK66F18.o" "../Project_Settings/Startup_Code/system_MK66F18.c"
+Finished building: ../Project_Settings/Startup_Code/system_MK66F18.c
+ 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/Documents/Project-Codename/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Test.elf"  "Test.hex"
+Finished building: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6b8	   0x6c	  0x820	   3908	    f44	Test.elf
+Finished building: Test.siz
+ 
+20:55:04 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+../Sources/main.c:32:17: fatal error: usb.h: No such file or directory
+ #include "usb.h"
+                 ^
+compilation terminated.
+make: *** [Sources/main.o] Error 1
+21:02:30 **** Incremental Build of configuration Debug for project Test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building target: Test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/Documents/Project-Codename/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: Test.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Test.elf"  "Test.hex"
+Finished building: Test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley -x "Test.elf"
+   text	   data	    bss	    dec	    hex	filename
+  0x6c4	   0x6c	  0x820	   3920	    f50	Test.elf
+Finished building: Test.siz
+ 
