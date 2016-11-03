@@ -3,3 +3,13 @@
 workspace.kds/RemoteSystemTempFiles
 workspace.kds/.metadata
 workspace.kds/.DS_Store
+
+*.hex
+
+*.map
+
+workspace.kds/Test/Debug/Test.hex
+
+workspace.kds/Test/Debug/Test.map
+
+*.o
