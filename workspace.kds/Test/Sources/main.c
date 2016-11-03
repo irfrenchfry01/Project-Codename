@@ -37,8 +37,7 @@ int main(void)
 
     /* Write your code here */
 	//Enable high drive strength
-	PORTC_PCR5 = 0x40;
-	PORTC_GPCLR = 0xFFFFFFFF;
+
 
     /* This for loop should be replaced. By default this loop allows a single stepping. */
     for (;;) {
