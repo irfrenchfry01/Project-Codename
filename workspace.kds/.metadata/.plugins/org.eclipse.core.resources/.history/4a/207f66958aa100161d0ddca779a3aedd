@@ -40,8 +40,6 @@ int main(void)
 	//Test
 	PORTC_PCR5 = PORT_PCR_MUX(1);
 
-	// HEY BRANDON! I'M SILLY. HAHAHAHA! *in creepy voice*
-
     /* This for loop should be replaced. By default this loop allows a single stepping. */
     for (;;) {
         i++;
