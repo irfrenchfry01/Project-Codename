@@ -1,0 +1,86 @@
+21:13:05 **** Build of configuration Debug for project test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -c -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Finished building: ../Project_Settings/Startup_Code/startup.c
+ 
+Building file: ../Project_Settings/Startup_Code/startup_MK66F18.S
+Invoking: Cross ARM GNU Assembler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -x assembler-with-cpp -MMD -MP -MF"Project_Settings/Startup_Code/startup_MK66F18.d" -MT"Project_Settings/Startup_Code/startup_MK66F18.o" -c -o "Project_Settings/Startup_Code/startup_MK66F18.o" "../Project_Settings/Startup_Code/startup_MK66F18.S"
+Finished building: ../Project_Settings/Startup_Code/startup_MK66F18.S
+ 
+Building file: ../Project_Settings/Startup_Code/system_MK66F18.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/system_MK66F18.d" -MT"Project_Settings/Startup_Code/system_MK66F18.o" -c -o "Project_Settings/Startup_Code/system_MK66F18.o" "../Project_Settings/Startup_Code/system_MK66F18.c"
+Finished building: ../Project_Settings/Startup_Code/system_MK66F18.c
+ 
+Building target: test.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/garrett/workspace.kds/test/Project_Settings/Linker_Files" -Wl,-Map,"test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o ./Project_Settings/Startup_Code/startup_MK66F18.o ./Project_Settings/Startup_Code/system_MK66F18.o   
+Finished building target: test.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "test.elf"  "test.hex"
+Finished building: test.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "test.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1720	    108	   2080	   3908	    f44	test.elf
+Finished building: test.siz
+ 
+22:45:39 **** Build of configuration Debug for project test ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -D"CPU_MK66FX1M0VLQ18" -I"../Sources" -I"../Project_Settings/Startup_Code" -I"../SDK/platform/CMSIS/Include" -I"../SDK/platform/devices" -I"../SDK/platform/devices/MK66F18/include" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+In file included from ../SDK/platform/devices/fsl_device_registers.h:365:0,
+                 from ../Sources/main.c:31:
+../Sources/main.c: In function 'main':
+../SDK/platform/devices/MK66F18/include/MK66F18.h:11348:57: error: invalid type argument of '->' (have 'unsigned int')
+ #define GPIO_PDDR_REG(base)                      ((base)->PDDR)
+                                                         ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:40004:36: note: in expansion of macro 'GPIO_PDDR_REG'
+ #define GPIO_WR_PDDR(base, value) (GPIO_PDDR_REG(base) = (value))
+                                    ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:40006:37: note: in expansion of macro 'GPIO_WR_PDDR'
+ #define GPIO_SET_PDDR(base, value) (GPIO_WR_PDDR(base, GPIO_RD_PDDR(base) |  (value)))
+                                     ^
+../Sources/main.c:69:2: note: in expansion of macro 'GPIO_SET_PDDR'
+  GPIO_SET_PDDR(GPIOC_IDX, 13);
+  ^
+In file included from ../SDK/platform/devices/fsl_device_registers.h:367:0,
+                 from ../Sources/main.c:31:
+../SDK/platform/devices/MK66F18/include/MK66F18.h:11348:57: error: invalid type argument of '->' (have 'unsigned int')
+ #define GPIO_PDDR_REG(base)                      ((base)->PDDR)
+                                                         ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:40004:59: note: in definition of macro 'GPIO_WR_PDDR'
+ #define GPIO_WR_PDDR(base, value) (GPIO_PDDR_REG(base) = (value))
+                                                           ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:40003:35: note: in expansion of macro 'GPIO_PDDR_REG'
+ #define GPIO_RD_PDDR(base)       (GPIO_PDDR_REG(base))
+                                   ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:40006:56: note: in expansion of macro 'GPIO_RD_PDDR'
+ #define GPIO_SET_PDDR(base, value) (GPIO_WR_PDDR(base, GPIO_RD_PDDR(base) |  (value)))
+                                                        ^
+../Sources/main.c:69:2: note: in expansion of macro 'GPIO_SET_PDDR'
+  GPIO_SET_PDDR(GPIOC_IDX, 13);
+  ^
+In file included from ../SDK/platform/devices/fsl_device_registers.h:365:0,
+                 from ../Sources/main.c:31:
+../SDK/platform/devices/MK66F18/include/MK66F18.h:11344:57: error: invalid type argument of '->' (have 'unsigned int')
+ #define GPIO_PSOR_REG(base)                      ((base)->PSOR)
+                                                         ^
+../SDK/platform/devices/MK66F18/include/MK66F18_extension.h:39926:36: note: in expansion of macro 'GPIO_PSOR_REG'
+ #define GPIO_WR_PSOR(base, value) (GPIO_PSOR_REG(base) = (value))
+                                    ^
+../Sources/main.c:70:2: note: in expansion of macro 'GPIO_WR_PSOR'
+  GPIO_WR_PSOR(GPIOC_IDX, 1);
+  ^
+make: *** [Sources/main.o] Error 1
