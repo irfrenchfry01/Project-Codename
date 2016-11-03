@@ -248,7 +248,7 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
  .FlashConfig   0x0000000000000400       0x10 ./Project_Settings/Startup_Code/startup_MK66F18.o
                 0x0000000000000410                . = ALIGN (0x4)
 
-.text           0x0000000000000410      0x2ac
+.text           0x0000000000000410      0x2a0
                 0x0000000000000410                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000000000410       0x54 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
@@ -368,106 +368,106 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
                 0x00000000000004e8                CAN0_Rx_Warning_IRQHandler
                 0x00000000000004e8                DMA1_DMA17_IRQHandler
  *(.text*)
- .text.main     0x00000000000004ec       0x20 ./Sources/main.o
+ .text.main     0x00000000000004ec       0x14 ./Sources/main.o
                 0x00000000000004ec                main
  .text.init_data_bss
-                0x000000000000050c       0xcc ./Project_Settings/Startup_Code/startup.o
-                0x000000000000050c                init_data_bss
+                0x0000000000000500       0xcc ./Project_Settings/Startup_Code/startup.o
+                0x0000000000000500                init_data_bss
  .text.SystemInit
-                0x00000000000005d8       0x3c ./Project_Settings/Startup_Code/system_MK66F18.o
-                0x00000000000005d8                SystemInit
- .text.exit     0x0000000000000614       0x28 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-exit.o)
-                0x0000000000000614                exit
+                0x00000000000005cc       0x3c ./Project_Settings/Startup_Code/system_MK66F18.o
+                0x00000000000005cc                SystemInit
+ .text.exit     0x0000000000000608       0x28 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-exit.o)
+                0x0000000000000608                exit
  .text.__libc_init_array
-                0x000000000000063c       0x4c /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-init.o)
-                0x000000000000063c                __libc_init_array
- .text.memset   0x0000000000000688       0x10 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-memset.o)
-                0x0000000000000688                memset
- .text._exit    0x0000000000000698        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(_exit.o)
-                0x0000000000000698                _exit
+                0x0000000000000630       0x4c /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-init.o)
+                0x0000000000000630                __libc_init_array
+ .text.memset   0x000000000000067c       0x10 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-memset.o)
+                0x000000000000067c                memset
+ .text._exit    0x000000000000068c        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(_exit.o)
+                0x000000000000068c                _exit
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x000000000000069c        0x2 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-impure.o)
- *fill*         0x000000000000069e        0x2 
+                0x0000000000000690        0x2 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-impure.o)
+ *fill*         0x0000000000000692        0x2 
  .rodata._global_impure_ptr
-                0x00000000000006a0        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-impure.o)
-                0x00000000000006a0                _global_impure_ptr
+                0x0000000000000694        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/libg_s.a(lib_a-impure.o)
+                0x0000000000000694                _global_impure_ptr
  *(.glue_7)
  .glue_7        0x0000000000000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x0000000000000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00000000000006a4        0x0 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x0000000000000698        0x0 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
  *(.init)
- .init          0x00000000000006a4        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crti.o
-                0x00000000000006a4                _init
- .init          0x00000000000006a8        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtn.o
+ .init          0x0000000000000698        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crti.o
+                0x0000000000000698                _init
+ .init          0x000000000000069c        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtn.o
  *(.fini)
- .fini          0x00000000000006b0        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crti.o
-                0x00000000000006b0                _fini
- .fini          0x00000000000006b4        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtn.o
-                0x00000000000006bc                . = ALIGN (0x4)
+ .fini          0x00000000000006a4        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crti.o
+                0x00000000000006a4                _fini
+ .fini          0x00000000000006a8        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtn.o
+                0x00000000000006b0                . = ALIGN (0x4)
 
-.vfp11_veneer   0x00000000000006bc        0x0
+.vfp11_veneer   0x00000000000006b0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000006bc        0x0
+.v4_bx          0x00000000000006b0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000006bc        0x0
+.iplt           0x00000000000006b0        0x0
  .iplt          0x0000000000000000        0x0 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x00000000000006bc        0x8
-                0x00000000000006bc                __exidx_start = .
+.ARM            0x00000000000006b0        0x8
+                0x00000000000006b0                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x00000000000006bc        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
-                0x00000000000006c4                __exidx_end = .
+ .ARM.exidx     0x00000000000006b0        0x8 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+                0x00000000000006b8                __exidx_end = .
 
-.rel.dyn        0x00000000000006c4        0x0
+.rel.dyn        0x00000000000006b8        0x0
  .rel.iplt      0x0000000000000000        0x0 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
 
-.ctors          0x00000000000006c4        0x0
-                0x00000000000006c4                __CTOR_LIST__ = .
+.ctors          0x00000000000006b8        0x0
+                0x00000000000006b8                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
  *(SORT(.ctors.*))
  *(.ctors)
-                0x00000000000006c4                __CTOR_END__ = .
+                0x00000000000006b8                __CTOR_END__ = .
 
-.dtors          0x00000000000006c4        0x0
-                0x00000000000006c4                __DTOR_LIST__ = .
+.dtors          0x00000000000006b8        0x0
+                0x00000000000006b8                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *crtbegin?.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
  *(SORT(.dtors.*))
  *(.dtors)
-                0x00000000000006c4                __DTOR_END__ = .
+                0x00000000000006b8                __DTOR_END__ = .
 
-.preinit_array  0x00000000000006c4        0x0
-                0x00000000000006c4                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x00000000000006b8        0x0
+                0x00000000000006b8                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x00000000000006c4                PROVIDE (__preinit_array_end, .)
+                0x00000000000006b8                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x00000000000006c4        0x4
-                0x00000000000006c4                PROVIDE (__init_array_start, .)
+.init_array     0x00000000000006b8        0x4
+                0x00000000000006b8                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x00000000000006c4        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
-                0x00000000000006c8                PROVIDE (__init_array_end, .)
+ .init_array    0x00000000000006b8        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
+                0x00000000000006bc                PROVIDE (__init_array_end, .)
 
-.fini_array     0x00000000000006c8        0x4
-                0x00000000000006c8                PROVIDE (__fini_array_start, .)
+.fini_array     0x00000000000006bc        0x4
+                0x00000000000006bc                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00000000000006c8        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
-                0x00000000000006cc                PROVIDE (__fini_array_end, .)
-                0x00000000000006cc                __etext = .
-                0x00000000000006cc                __DATA_ROM = .
+ .fini_array    0x00000000000006bc        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
+                0x00000000000006c0                PROVIDE (__fini_array_end, .)
+                0x00000000000006c0                __etext = .
+                0x00000000000006c0                __DATA_ROM = .
 
 .interrupts_ram
                 0x000000001fff0000        0x0
@@ -481,7 +481,7 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
                 0x0000000000000000                __VECTOR_RAM = DEFINED (__ram_vector_table__)?__VECTOR_RAM__:ORIGIN (m_interrupts)
                 0x0000000000000000                __RAM_VECTOR_TABLE_SIZE_BYTES = DEFINED (__ram_vector_table__)?(__interrupts_ram_end__ - __interrupts_ram_start__):0x0
 
-.data           0x000000001fff0000       0x64 load address 0x00000000000006cc
+.data           0x000000001fff0000       0x64 load address 0x00000000000006c0
                 0x000000001fff0000                . = ALIGN (0x4)
                 0x000000001fff0000                __DATA_RAM = .
                 0x000000001fff0000                __data_start__ = .
@@ -494,14 +494,14 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
  .jcr           0x000000001fff0060        0x4 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtend.o
                 0x000000001fff0064                . = ALIGN (0x4)
                 0x000000001fff0064                __data_end__ = .
-                0x0000000000000730                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
+                0x0000000000000724                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
                 0x0000000000100000                text_end = (ORIGIN (m_text) + 0xffbf0)
                 0x0000000000000001                ASSERT ((__DATA_END <= text_end), region m_text overflowed with text and data)
 
-.igot.plt       0x000000001fff0064        0x0 load address 0x0000000000000730
+.igot.plt       0x000000001fff0064        0x0 load address 0x0000000000000724
  .igot.plt      0x0000000000000000        0x0 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtbegin.o
 
-.bss            0x000000001fff0064       0x20 load address 0x0000000000000730
+.bss            0x000000001fff0064       0x20 load address 0x0000000000000724
                 0x000000001fff0064                . = ALIGN (0x4)
                 0x000000001fff0064                __START_BSS = .
                 0x000000001fff0064                __bss_start__ = .
@@ -563,19 +563,19 @@ LOAD /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.
  .ARM.attributes
                 0x0000000000000278       0x22 /Applications/KDS_v3.app/Contents/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu/crtn.o
                 0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region m_data_2 overflowed with stack and heap)
-OUTPUT(Test.elf elf32-littlearm)
+OUTPUT(test.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0xfc6
- .debug_info    0x0000000000000000      0x1ba ./Sources/main.o
- .debug_info    0x00000000000001ba      0x3a7 ./Project_Settings/Startup_Code/startup.o
- .debug_info    0x0000000000000561       0xa6 ./Project_Settings/Startup_Code/startup_MK66F18.o
- .debug_info    0x0000000000000607      0x9bf ./Project_Settings/Startup_Code/system_MK66F18.o
+.debug_info     0x0000000000000000      0xeb2
+ .debug_info    0x0000000000000000       0xc9 ./Sources/main.o
+ .debug_info    0x00000000000000c9      0x3a7 ./Project_Settings/Startup_Code/startup.o
+ .debug_info    0x0000000000000470       0x83 ./Project_Settings/Startup_Code/startup_MK66F18.o
+ .debug_info    0x00000000000004f3      0x9bf ./Project_Settings/Startup_Code/system_MK66F18.o
 
-.debug_abbrev   0x0000000000000000      0x2ed
- .debug_abbrev  0x0000000000000000       0xc5 ./Sources/main.o
- .debug_abbrev  0x00000000000000c5       0xfa ./Project_Settings/Startup_Code/startup.o
- .debug_abbrev  0x00000000000001bf       0x14 ./Project_Settings/Startup_Code/startup_MK66F18.o
- .debug_abbrev  0x00000000000001d3      0x11a ./Project_Settings/Startup_Code/system_MK66F18.o
+.debug_abbrev   0x0000000000000000      0x2a3
+ .debug_abbrev  0x0000000000000000       0x7b ./Sources/main.o
+ .debug_abbrev  0x000000000000007b       0xfa ./Project_Settings/Startup_Code/startup.o
+ .debug_abbrev  0x0000000000000175       0x14 ./Project_Settings/Startup_Code/startup_MK66F18.o
+ .debug_abbrev  0x0000000000000189      0x11a ./Project_Settings/Startup_Code/system_MK66F18.o
 
 .debug_aranges  0x0000000000000000       0x88
  .debug_aranges
@@ -625,19 +625,19 @@ OUTPUT(Test.elf elf32-littlearm)
  .debug_macro   0x00000000000439f6      0x162 ./Project_Settings/Startup_Code/system_MK66F18.o
  .debug_macro   0x0000000000043b58       0x65 ./Project_Settings/Startup_Code/system_MK66F18.o
 
-.debug_line     0x0000000000000000      0xb2d
- .debug_line    0x0000000000000000      0x364 ./Sources/main.o
- .debug_line    0x0000000000000364      0x390 ./Project_Settings/Startup_Code/startup.o
- .debug_line    0x00000000000006f4       0x6a ./Project_Settings/Startup_Code/startup_MK66F18.o
- .debug_line    0x000000000000075e      0x3cf ./Project_Settings/Startup_Code/system_MK66F18.o
+.debug_line     0x0000000000000000      0xb2c
+ .debug_line    0x0000000000000000      0x363 ./Sources/main.o
+ .debug_line    0x0000000000000363      0x390 ./Project_Settings/Startup_Code/startup.o
+ .debug_line    0x00000000000006f3       0x6a ./Project_Settings/Startup_Code/startup_MK66F18.o
+ .debug_line    0x000000000000075d      0x3cf ./Project_Settings/Startup_Code/system_MK66F18.o
 
-.debug_str      0x0000000000000000   0x24d573
- .debug_str     0x0000000000000000   0x24cfc6 ./Sources/main.o
-                                     0x24d1d6 (size before relaxing)
- .debug_str     0x000000000024cfc6      0x15e ./Project_Settings/Startup_Code/startup.o
-                                     0x24d2dd (size before relaxing)
- .debug_str     0x000000000024d124      0x44f ./Project_Settings/Startup_Code/system_MK66F18.o
-                                     0x24d672 (size before relaxing)
+.debug_str      0x0000000000000000   0x24d526
+ .debug_str     0x0000000000000000   0x24cf4e ./Sources/main.o
+                                     0x24d14d (size before relaxing)
+ .debug_str     0x000000000024cf4e      0x173 ./Project_Settings/Startup_Code/startup.o
+                                     0x24d2ba (size before relaxing)
+ .debug_str     0x000000000024d0c1      0x465 ./Project_Settings/Startup_Code/system_MK66F18.o
+                                     0x24d64f (size before relaxing)
 
 .comment        0x0000000000000000       0x70
  .comment       0x0000000000000000       0x70 ./Sources/main.o
