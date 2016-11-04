@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>test</name>
+	<name>Test</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -27,7 +27,7 @@
 	<variableList>
 		<variable>
 			<name>PROJECT_KSDK_PATH</name>
-			<value>file:/Users/garrett/Documents/Freescale/KSDK_1.3.0</value>
+			<value>file:/Users/Cassie/Documents/Freescale/KSDK_1.3.0</value>
 		</variable>
 	</variableList>
 </projectDescription>

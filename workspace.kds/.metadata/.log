@@ -1,4 +1,4 @@
-!SESSION 2016-10-30 16:25:04.868 -----------------------------------------------
+!SESSION 2016-10-30 16:27:48.399 -----------------------------------------------
 eclipse.buildId=3.2.0.201603041649
 java.version=1.7.0_76
 java.vendor=Oracle Corporation
@@ -6,21 +6,21 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 Framework arguments:  -product com.somniumtech.branding.kds.ide
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
 
-!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:25:23.827
+!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:28:57.345
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:25:27.756
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:29:20.403
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:32:42.848
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:31:53.492
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
 
-!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2016-10-30 16:40:10.383
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2016-10-30 16:38:25.863
 !MESSAGE Error parsing metadata repository
-!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2016-10-30 16:40:10.383
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2016-10-30 16:38:25.863
 !MESSAGE Error in file:/Applications/KDS_v3.app/Contents/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content-783366767.jar at line 6060, column 45: Missing required attribute in "unit": id
 
-!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2016-10-30 16:42:02.704
+!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2016-10-30 16:39:47.835
 !MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.swt".
 !STACK 0
 org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
@@ -94,8 +94,8 @@ Caused by: org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
 	... 53 more
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-10-30 16:42:02.707
-!MESSAGE Exception occurred while unrendering: org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@23fa2bd1 (elementId: IDEWindow, tags: [topLevel], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: null, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: %trimmedwindow.label.eclipseSDK, iconURI: null, tooltip: null, context: null, variables: [], x: 42, y: 80, width: 1248, height: 787)
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-10-30 16:39:47.904
+!MESSAGE Exception occurred while unrendering: org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@561d596c (elementId: IDEWindow, tags: [topLevel], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: null, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: %trimmedwindow.label.eclipseSDK, iconURI: null, tooltip: null, context: null, variables: [], x: 42, y: 28, width: 1024, height: 768)
 !STACK 0
 org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:62)
@@ -167,7 +167,7 @@ Caused by: org.eclipse.swt.SWTException: Widget is disposed
 	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
 	... 53 more
-!SESSION 2016-10-30 16:42:03.876 -----------------------------------------------
+!SESSION 2016-10-30 16:39:52.672 -----------------------------------------------
 eclipse.buildId=3.2.0.201603041649
 java.version=1.7.0_76
 java.vendor=Oracle Corporation
@@ -175,17 +175,33 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 Framework arguments:  -product com.somniumtech.branding.kds.ide
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
 
-!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:42:31.959
+!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:40:12.033
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:42:34.852
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:40:26.555
+!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
+!SESSION 2016-10-30 16:41:07.158 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product com.somniumtech.branding.kds.ide
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:41:13.940
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:41:18.396
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
 
-!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2016-10-30 16:43:14.438
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:41:55.258
+!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2016-10-30 16:43:28.997
 !MESSAGE Error parsing metadata repository
-!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2016-10-30 16:43:14.438
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2016-10-30 16:43:28.997
 !MESSAGE Error in file:/Applications/KDS_v3.app/Contents/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content-783366767.jar at line 6060, column 45: Missing required attribute in "unit": id
-!SESSION 2016-10-30 16:53:55.008 -----------------------------------------------
+!SESSION 2016-10-30 16:55:25.995 -----------------------------------------------
 eclipse.buildId=3.2.0.201603041649
 java.version=1.7.0_76
 java.vendor=Oracle Corporation
@@ -193,16 +209,16 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 Framework arguments:  -product com.somniumtech.branding.kds.ide
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
 
-!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:54:04.465
+!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:55:37.981
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:54:07.499
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:55:50.751
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:55:15.839
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-10-30 16:57:38.275
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:38.466
+!ENTRY com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:29.797
 !MESSAGE !NewProjectCreator_logError2!
 !STACK 1
 com.processorexpert.core.ide.wizard.ui.WizardException: !NewProjectCreator_wizardException3!ilg.gnuarmeclipse.debug.gdbjtag.openocd.launchConfigurationType
@@ -293,10 +309,10 @@ com.processorexpert.core.ide.wizard.ui.WizardException: !NewProjectCreator_wizar
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
-!SUBENTRY 1 com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:38.467
+!SUBENTRY 1 com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:29.799
 !MESSAGE !NewProjectCreator_wizardException3!ilg.gnuarmeclipse.debug.gdbjtag.openocd.launchConfigurationType
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:38.468
+!ENTRY com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:29.810
 !MESSAGE !NewProjectCreator_logError2!
 !STACK 1
 com.processorexpert.core.ide.wizard.ui.WizardException: !NewProjectCreator_wizardException3!com.pemicro.debug.gdbjtag.pne.launchConfigurationType
@@ -387,119 +403,153 @@ com.processorexpert.core.ide.wizard.ui.WizardException: !NewProjectCreator_wizar
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
-!SUBENTRY 1 com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:38.469
+!SUBENTRY 1 com.processorexpert.core.ide.wizard.ui 4 0 2016-10-30 17:04:29.811
 !MESSAGE !NewProjectCreator_wizardException3!com.pemicro.debug.gdbjtag.pne.launchConfigurationType
 
-!ENTRY org.eclipse.cdt.core 1 0 2016-10-30 17:04:43.124
-!MESSAGE Indexed 'test' (3 sources, 53 headers) in 3.08 sec: 5,140 declarations; 6,665 references; 0 unresolved inclusions; 34 syntax errors; 533 unresolved names (4.3%)
-!SESSION 2016-11-02 22:32:06.453 -----------------------------------------------
-eclipse.buildId=3.2.0.201603041649
-java.version=1.7.0_76
-java.vendor=Oracle Corporation
-BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
-Framework arguments:  -product com.somniumtech.branding.kds.ide
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-30 17:04:42.366
+!MESSAGE Indexed 'Test' (3 sources, 53 headers) in 6.02 sec: 5,140 declarations; 6,665 references; 0 unresolved inclusions; 34 syntax errors; 533 unresolved names (4.3%)
 
-!ENTRY org.eclipse.core.net 1 0 2016-11-02 22:33:14.664
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-30 17:38:07.508
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-02 22:33:18.537
-!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
-!SESSION 2016-11-02 22:44:38.852 -----------------------------------------------
-eclipse.buildId=3.2.0.201603041649
-java.version=1.7.0_76
-java.vendor=Oracle Corporation
-BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
-Framework arguments:  -product com.somniumtech.branding.kds.ide
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
+For more details, see the JLinkGDBServerCL console.
 
-!ENTRY org.eclipse.core.net 1 0 2016-11-02 22:45:01.854
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
-
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-02 22:45:05.911
-!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
-!SESSION 2016-11-02 23:33:27.277 -----------------------------------------------
-eclipse.buildId=3.2.0.201603041649
-java.version=1.7.0_76
-java.vendor=Oracle Corporation
-BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
-Framework arguments:  -product com.somniumtech.branding.kds.ide
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
-
-!ENTRY org.eclipse.core.net 1 0 2016-11-02 23:33:53.174
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
-
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-02 23:34:09.306
-!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
-
-!ENTRY org.eclipse.core.resources 4 568 2016-11-02 23:39:00.674
-!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!ENTRY org.eclipse.cdt.launch.remote 4 150 2016-10-30 23:49:00.658
+!MESSAGE Error during file upload.
 !STACK 0
-java.io.FileNotFoundException: /Users/Cassie/Documents/Project-Codename/workspace.kds/.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.markers.snap (No such file or directory)
-	at java.io.FileOutputStream.open(Native Method)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
-	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
-	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1745)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1828)
-	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
-	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
-	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+java.lang.NullPointerException
+	at java.io.File.<init>(File.java:317)
+	at org.eclipse.rse.internal.services.local.files.LocalFileService.upload(LocalFileService.java:639)
+	at org.eclipse.cdt.launch.remote.RSEHelper.remoteFileDownload(RSEHelper.java:198)
+	at org.eclipse.cdt.launch.remote.launching.RemoteRunLaunchDelegate.launch(RemoteRunLaunchDelegate.java:299)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-!SESSION 2016-11-02 23:39:37.844 -----------------------------------------------
-eclipse.buildId=3.2.0.201603041649
-java.version=1.7.0_76
-java.vendor=Oracle Corporation
-BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
-Framework arguments:  -product com.somniumtech.branding.kds.ide
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
-
-!ENTRY org.eclipse.core.resources 2 10035 2016-11-02 23:39:54.627
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.core.net 1 0 2016-11-02 23:40:04.077
-!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
-
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-02 23:40:14.513
-!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
-
-!ENTRY org.eclipse.core.resources 4 568 2016-11-02 23:44:55.364
-!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!SUBENTRY 1 org.eclipse.cdt.launch.remote 4 150 2016-10-30 23:49:00.659
+!MESSAGE 
 !STACK 0
-java.io.FileNotFoundException: /Users/Cassie/Documents/Project-Codename/workspace.kds/.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.markers.snap (No such file or directory)
-	at java.io.FileOutputStream.open(Native Method)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
-	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
-	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1745)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1828)
-	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1202)
-	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
-	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+java.lang.NullPointerException
+	at java.io.File.<init>(File.java:317)
+	at org.eclipse.rse.internal.services.local.files.LocalFileService.upload(LocalFileService.java:639)
+	at org.eclipse.cdt.launch.remote.RSEHelper.remoteFileDownload(RSEHelper.java:198)
+	at org.eclipse.cdt.launch.remote.launching.RemoteRunLaunchDelegate.launch(RemoteRunLaunchDelegate.java:299)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 
-!ENTRY org.eclipse.ui.ide 4 4 2016-11-03 00:05:37.030
-!MESSAGE Problems saving workspace
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-30 23:52:40.774
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
 
-!ENTRY org.eclipse.ui.ide 4 1 2016-11-03 00:05:37.030
-!MESSAGE Problems occurred while trying to save the state of the workbench.
-!SUBENTRY 1 org.eclipse.core.resources 4 568 2016-11-03 00:05:37.030
-!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+For more details, see the JLinkGDBServerCL console.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-31 00:05:25.786
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
+
+For more details, see the JLinkGDBServerCL console.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-31 00:06:06.539
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
+
+For more details, see the JLinkGDBServerCL console.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-31 00:06:21.032
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
+
+For more details, see the JLinkGDBServerCL console.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-10-31 00:11:52.207
+!MESSAGE J-Link GDB Server failed: 
+Could not connect to J-Link. Please check if plugged into USB port or Ethernet switch.
+
+For more details, see the JLinkGDBServerCL console.
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2016-10-31 00:12:54.579
+!MESSAGE Error in final launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:115)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launchDebugSession(LaunchConfigurationDelegate.java:439)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launchDebugger(LaunchConfigurationDelegate.java:166)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launch(LaunchConfigurationDelegate.java:138)
+	at com.somniumtech.flash.jlink.FlashDelegate.launch(FlashDelegate.java:22)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+java.lang.Exception: localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10004 2016-10-31 00:12:54.579
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+!SUBENTRY 2 org.eclipse.cdt.dsf.gdb 4 10004 2016-10-31 00:12:54.579
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
 !STACK 0
-java.io.FileNotFoundException: /Users/Cassie/Documents/Project-Codename/workspace.kds/.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.markers (No such file or directory)
-	at java.io.FileOutputStream.open(Native Method)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
-	at java.io.FileOutputStream.<init>(FileOutputStream.java:171)
-	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:51)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(SaveManager.java:1635)
-	at org.eclipse.core.internal.resources.SaveManager.visitAndSave(SaveManager.java:1716)
-	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1177)
-	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2344)
-	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:509)
-	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
-!SESSION 2016-11-03 22:48:07.198 -----------------------------------------------
+java.lang.Exception: localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2016-10-31 00:14:02.995
+!MESSAGE Error in final launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:115)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launchDebugSession(LaunchConfigurationDelegate.java:439)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launchDebugger(LaunchConfigurationDelegate.java:166)
+	at ilg.gnuarmeclipse.debug.gdbjtag.jlink.dsf.LaunchConfigurationDelegate.launch(LaunchConfigurationDelegate.java:138)
+	at com.somniumtech.flash.jlink.FlashDelegate.launch(FlashDelegate.java:22)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+java.lang.Exception: localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10004 2016-10-31 00:14:02.996
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+!SUBENTRY 2 org.eclipse.cdt.dsf.gdb 4 10004 2016-10-31 00:14:02.996
+!MESSAGE Failed to execute MI command:
+-target-select remote localhost:2331
+Error message from debugger back end:
+localhost:2331: Connection refused.
+!STACK 0
+java.lang.Exception: localhost:2331: Connection refused.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+!SESSION 2016-11-01 18:38:43.752 -----------------------------------------------
 eclipse.buildId=3.2.0.201603041649
 java.version=1.7.0_76
 java.vendor=Oracle Corporation
@@ -507,8 +557,21 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 Framework arguments:  -product com.somniumtech.branding.kds.ide
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
 
-!ENTRY org.eclipse.core.net 1 0 2016-11-03 22:48:26.040
+!ENTRY org.eclipse.core.net 1 0 2016-11-01 18:40:09.186
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
-!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-03 22:48:50.885
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-01 18:42:18.293
+!MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist
+!SESSION 2016-11-03 23:27:52.537 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product com.somniumtech.branding.kds.ide
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.somniumtech.branding.kds.ide
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-03 23:28:36.520
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2016-11-03 23:28:44.103
 !MESSAGE External elements location /Applications/KDS_v3.app/Contents/eclipse/ProcessorExpert/BoardConfigurations/wizard_data does not exist

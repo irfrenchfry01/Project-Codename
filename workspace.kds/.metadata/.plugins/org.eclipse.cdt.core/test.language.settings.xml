@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
-	<configuration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1949130238" name="Debug">
+	<configuration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.228091565" name="Debug">
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="ilg.gnuarmeclipse.managedbuild.cross.GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">

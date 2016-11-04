@@ -44,38 +44,38 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-test.hex \
+Test.hex \
 
 SECONDARY_SIZE += \
-test.siz \
+Test.siz \
 
 
 # All Target
-all: test.elf secondary-outputs
+all: Test.elf secondary-outputs
 
 # Tool invocations
-test.elf: $(OBJS) $(USER_OBJS)
+Test.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/garrett/workspace.kds/test/Project_Settings/Linker_Files" -Wl,-Map,"test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "MK66FX1M0xxx18_flash.ld" -Xlinker --gc-sections -L"/Users/Cassie/Documents/Project-Codename/workspace.kds/Test/Project_Settings/Linker_Files" -Wl,-Map,"Test.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "Test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-test.hex: test.elf
+Test.hex: Test.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
-	arm-none-eabi-objcopy -O ihex "test.elf"  "test.hex"
+	arm-none-eabi-objcopy -O ihex "Test.elf"  "Test.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-test.siz: test.elf
+Test.siz: Test.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=berkeley "test.elf"
+	arm-none-eabi-size --format=berkeley -x "Test.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(SECONDARY_FLASH)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) test.elf
+	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(SECONDARY_FLASH)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) Test.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)

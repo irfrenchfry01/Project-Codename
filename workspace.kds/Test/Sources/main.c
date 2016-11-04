@@ -32,42 +32,13 @@
 
 static int i = 0;
 
-typedef union _PORTx_PCRn_t
-{
-	uint32_t value;
-	struct
-	{
-		uint32_t PS 		: 1;
-		uint32_t PE 		: 1;
-		uint32_t SRE		: 1;
-		uint32_t Rsvd3		: 1;
-		uint32_t PFE		: 1;
-		uint32_t ODE		: 1;
-		uint32_t DSE		: 1;
-		uint32_t Rsvd7		: 1;
-		uint32_t Mux		: 3;
-		uint32_t Rsvd11_14	: 4;
-		uint32_t LK			: 1;
-		uint32_t IRQC		: 4;
-		uint32_t Rsvd20_23	: 4;
-		uint32_t ISF		: 1;
-		uint32_t Rsvd25_31	: 7;
-	}Bit;
-}PORTx_PCRn_t;
-
 int main(void)
 {
 
     /* Write your code here */
-	//PORTx_PCRn_t PC13;
-	//PC13.value = PORTC_PCR13;
-	//PC13.Bit.Mux = 0b001;
-	//PORTC_PCR13 = PC13.value;
-
-	//PORTC13 = 1;
-
-	GPIO_SET_PDDR(GPIOC_IDX, 13);
-	GPIO_WR_PSOR(GPIOC_IDX, 1);
+	//Enable high drive strength
+	PORTC_PCR5 = 0x40;
+	PORTC_GPCLR = 0xFFFFFFFF;
 
     /* This for loop should be replaced. By default this loop allows a single stepping. */
     for (;;) {

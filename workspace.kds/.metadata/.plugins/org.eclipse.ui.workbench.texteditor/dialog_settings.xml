@@ -2,25 +2,26 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="265" key="DIALOG_WIDTH"/>
-		<item value="375" key="DIALOG_Y_ORIGIN"/>
+		<item value="303" key="DIALOG_Y_ORIGIN"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="1147" key="DIALOG_X_ORIGIN"/>
-		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="791" key="DIALOG_X_ORIGIN"/>
+		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
 		<item value="false" key="isRegEx"/>
-		<item value="true" key="casesensitive"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="GPIOC_IDX" key="selection"/>
+		<item value="PORTC" key="selection"/>
 		<list key="findhistory">
-			<item value="GPIOC_IDX"/>
-			<item value="GPIO_PSOR"/>
-			<item value="GPIO"/>
-			<item value="GPIO_PDDR"/>
 			<item value="PORTC"/>
-			<item value="PORTC13"/>
+			<item value="direction"/>
+			<item value="DIRiection"/>
+			<item value="DIR"/>
+			<item value="PORTA_DIR"/>
+			<item value="PORT_DIR"/>
+			<item value="IODIR"/>
 			<item value="PORT"/>
 		</list>
 		<list key="replacehistory">
