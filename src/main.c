@@ -67,6 +67,7 @@ int main(void)
 	//PORTC_PCR13 = PC13.value;
 
 	//PORTC13 = 1;
+	//hoopla
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
