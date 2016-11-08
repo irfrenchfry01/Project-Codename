@@ -32,42 +32,40 @@
 
 static int i = 0;
 
-typedef union _PORTx_PCRn_t
-{
+typedef union _PORTx_PCRn_t {
 	uint32_t value;
-	struct
-	{
-		uint32_t PS 		: 1;
-		uint32_t PE 		: 1;
-		uint32_t SRE		: 1;
-		uint32_t Rsvd3		: 1;
-		uint32_t PFE		: 1;
-		uint32_t ODE		: 1;
-		uint32_t DSE		: 1;
-		uint32_t Rsvd7		: 1;
-		uint32_t Mux		: 3;
-		uint32_t Rsvd11_14	: 4;
-		uint32_t LK			: 1;
-		uint32_t IRQC		: 4;
-		uint32_t Rsvd20_23	: 4;
-		uint32_t ISF		: 1;
-		uint32_t Rsvd25_31	: 7;
-	}Bit;
-}PORTx_PCRn_t;
+	struct {
+		uint32_t PS :1;
+		uint32_t PE :1;
+		uint32_t SRE :1;
+		uint32_t Rsvd3 :1;
+		uint32_t PFE :1;
+		uint32_t ODE :1;
+		uint32_t DSE :1;
+		uint32_t Rsvd7 :1;
+		uint32_t Mux :3;
+		uint32_t Rsvd11_14 :4;
+		uint32_t LK :1;
+		uint32_t IRQC :4;
+		uint32_t Rsvd20_23 :4;
+		uint32_t ISF :1;
+		uint32_t Rsvd25_31 :7;
+	} Bit;
+} PORTx_PCRn_t;
 
-int main(void)
-{
+int main(void) {
 
-    /* Write your code here */
-	uint32_t PORTC_PCR13 = 0x4004B034;
+	/* Write your code here */
+	//uint32_t PORTC_PCR13 = 0x4004B034;
+	uint32_t test_var = 0;
 
-	PORTx_PCRn_t PC13;
+	//PORTx_PCRn_t PC13;
 	//PC13.value = PORTC_PCR13;
-	PC13.Bit.Mux = 0b001;
+	//PC13.Bit.Mux = 0b001;
 	//PORTC_PCR13 = PC13.value;
 
 	//PORTC13 = 1;
-	//hoopla
+	//dang it
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
@@ -76,16 +74,16 @@ int main(void)
 	//Port Data Input Register (GPIOC_PDIR)
 	//Port Data Direction Register (GPIOC_PDDR)
 
-	GPIO_SET_PDDR(PORTC_PCR13, PC13.value);
+	//GPIO_SET_PDDR(PORTC_PCR13, PC13.value);
 	//GPIO_WR_PSOR(GPIOC_IDX, 1);
-	PORTC13 = 1;
+	//PORTC13 = 1;
 
-    /* This for loop should be replaced. By default this loop allows a single stepping. */
-    for (;;) {
-        i++;
-    }
-    /* Never leave main */
-    return 0;
+	/* This for loop should be replaced. By default this loop allows a single stepping. */
+	for (;;) {
+		i++;
+	}
+	/* Never leave main */
+	return 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 // EOF
