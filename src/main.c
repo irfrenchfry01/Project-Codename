@@ -53,11 +53,92 @@ typedef union _PORTx_PCRn_t {
 	} Bit;
 } PORTx_PCRn_t;
 
+
+
+
+//#define kGPIO_DigitalInput  0
+//#define kGPIO_DigitalOutput 1;
+
+/*! @brief GPIO direction definition*/
+typedef enum _gpio_pin_direction
+{
+    kGPIO_DigitalInput = 0U,  /*!< Set current pin as digital input*/
+    kGPIO_DigitalOutput = 1U, /*!< Set current pin as digital output*/
+} gpio_pin_direction_t;
+
+typedef struct _gpio_pin_config
+{
+    gpio_pin_direction_t pinDirection; /*!< gpio direction, input or output */
+    /* Output configurations, please ignore if configured as a input one */
+    uint8_t outputLogic; /*!< Set default output logic, no use in input */
+} gpio_pin_config_t;
+
+/*! @name GPIO Output Operations */
+/*@{*/
+
+/*!
+ * @brief Sets the output level of the multiple GPIO pins to the logic 1 or 0.
+ *
+ * @param base    GPIO peripheral base pointer(GPIOA, GPIOB, GPIOC, and so on.)
+ * @param pin     GPIO pin's number
+ * @param output  GPIO pin output logic level.
+ *        - 0: corresponding pin output low logic level.
+ *        - 1: corresponding pin output high logic level.
+ */
+static inline void GPIO_WritePinOutput(GPIO_Type *base, uint32_t pin, uint8_t output)
+{
+    if (output == 0U)
+    {
+        base->PCOR = 1 << pin;
+    }
+    else
+    {
+        base->PSOR = 1 << pin;
+    }
+}
+
+
+void GPIO_PinInit(GPIO_Type *base, uint32_t pin, const gpio_pin_config_t *config)
+{
+    //assert(config);
+
+    if (config->pinDirection == kGPIO_DigitalInput)
+    {
+        base->PDDR &= ~(1U << pin);
+    }
+    else
+    {
+        GPIO_WritePinOutput(base, pin, config->outputLogic);
+        base->PDDR |= (1U << pin);
+    }
+}
+
 int main(void) {
 
 	/* Write your code here */
-	//uint32_t PORTC_PCR13 = 0x4004B034;
-	uint32_t test_var = 0;
+	// Define a digital input pin configuration,
+	gpio_pin_config_t config =
+	{
+	   kGPIO_DigitalInput,
+	   0,
+	};
+
+	 //Define a digital output pin configuration,
+	 gpio_pin_config_t config =
+	{
+	   kGPIO_DigitalOutput,
+	   0,
+	};
+
+
+	gpio_pin_config_t *TmpConfig;
+	TmpConfig->pinDirection = kGPIO_DigitalOutput;
+	TmpConfig->outputLogic = 1;
+
+	GPIO_PinInit(GPIOC_IDX, 13, TmpConfig);
+
+	//uint32_t DEF_PORTC_PCR13 = 0x4004B034;
+	//uint32_t test_var = 0;
 
 	//PORTx_PCRn_t PC13;
 	//PC13.value = PORTC_PCR13;
@@ -74,7 +155,7 @@ int main(void) {
 	//Port Data Input Register (GPIOC_PDIR)
 	//Port Data Direction Register (GPIOC_PDDR)
 
-	//GPIO_SET_PDDR(PORTC_PCR13, PC13.value);
+	//GPIO_SET_PDDR(DEF_PORTC_PCR13, PC13.value);
 	//GPIO_WR_PSOR(GPIOC_IDX, 1);
 	//PORTC13 = 1;
 
