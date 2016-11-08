@@ -1,0 +1,2 @@
+git proj with lots of libs and examples
+https://github.com/chipaudette/OpenAudio/tree/master/Kinetis%20Design%20Studio/Audio%20Processing%20Benchmarking/FIR_FFT_Benchmarking/devices/MK66F18
