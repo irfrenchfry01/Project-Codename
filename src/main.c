@@ -117,36 +117,20 @@ int main(void) {
 
 	/* Write your code here */
 	// Define a digital input pin configuration,
-	gpio_pin_config_t config =
+/*	gpio_pin_config_t config =
 	{
 	   kGPIO_DigitalInput,
 	   0,
 	};
-
+*/
 	 //Define a digital output pin configuration,
 	 gpio_pin_config_t config =
 	{
 	   kGPIO_DigitalOutput,
-	   0,
+	   1,
 	};
 
-
-	gpio_pin_config_t *TmpConfig;
-	TmpConfig->pinDirection = kGPIO_DigitalOutput;
-	TmpConfig->outputLogic = 1;
-
-	GPIO_PinInit(GPIOC_IDX, 13, TmpConfig);
-
-	//uint32_t DEF_PORTC_PCR13 = 0x4004B034;
-	//uint32_t test_var = 0;
-
-	//PORTx_PCRn_t PC13;
-	//PC13.value = PORTC_PCR13;
-	//PC13.Bit.Mux = 0b001;
-	//PORTC_PCR13 = PC13.value;
-
-	//PORTC13 = 1;
-	//dang it
+	GPIO_PinInit(PTC_BASE_PTR, 13, &config);
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
@@ -154,10 +138,6 @@ int main(void) {
 	//Port Toggle Output Register (GPIOC_PTOR)
 	//Port Data Input Register (GPIOC_PDIR)
 	//Port Data Direction Register (GPIOC_PDDR)
-
-	//GPIO_SET_PDDR(DEF_PORTC_PCR13, PC13.value);
-	//GPIO_WR_PSOR(GPIOC_IDX, 1);
-	//PORTC13 = 1;
 
 	/* This for loop should be replaced. By default this loop allows a single stepping. */
 	for (;;) {
