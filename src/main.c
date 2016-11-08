@@ -130,7 +130,7 @@ int main(void) {
 	   1,
 	};
 
-	GPIO_PinInit(PTC_BASE_PTR, 13, &config);
+	GPIO_PinInit(PTC_BASE_PTR, 5, &config);
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
