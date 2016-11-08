@@ -31,7 +31,7 @@
 #include "fsl_device_registers.h"
 
 static int i = 0;
-
+//TEST
 typedef union _PORTx_PCRn_t {
 	uint32_t value;
 	struct {
