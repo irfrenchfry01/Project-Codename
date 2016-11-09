@@ -133,16 +133,17 @@ static inline void PORT_SetPinMux(PORT_Type *base, uint32_t pin, port_mux_t mux)
 
 int main(void) {
 
-	/* Write your code here */
+	// TODO initialize stack?
+
 	// Define a digital input pin configuration,
-/*	gpio_pin_config_t config =
+	gpio_pin_config_t InputConfig =
 	{
 	   kGPIO_DigitalInput,
 	   0,
 	};
-*/
+
 	 //Define a digital output pin configuration,
-	 gpio_pin_config_t config =
+	gpio_pin_config_t OutputConfig =
 	{
 	   kGPIO_DigitalOutput,
 	   1,
@@ -150,9 +151,9 @@ int main(void) {
 
 	PORT_SetPinMux(PORTC, 5, kPORT_MuxAsGpio);
 
-	GPIO_PinInit(PTC_BASE_PTR, 5, &config);
-	GPIO_PinInit(PTC_BASE_PTR, 4, &config);
-	GPIO_PinInit(PTC_BASE_PTR, 6, &config);
+	GPIO_PinInit(PTC_BASE_PTR, 5, &OutputConfig);
+	//GPIO_PinInit(PTC_BASE_PTR, 4, &OutputConfig);
+	//GPIO_PinInit(PTC_BASE_PTR, 6, &OutputConfig);
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
