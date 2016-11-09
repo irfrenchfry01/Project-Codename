@@ -113,6 +113,24 @@ void GPIO_PinInit(GPIO_Type *base, uint32_t pin, const gpio_pin_config_t *config
     }
 }
 
+/*! @brief Pin mux selection */
+typedef enum _port_mux
+{
+    kPORT_PinDisabledOrAnalog = 0U, /*!< corresponding pin is disabled, but is used as an analog pin. */
+    kPORT_MuxAsGpio = 1U,           /*!< corresponding pin is configured as GPIO. */
+    kPORT_MuxAlt2 = 2U,             /*!< chip-specific */
+    kPORT_MuxAlt3 = 3U,             /*!< chip-specific */
+    kPORT_MuxAlt4 = 4U,             /*!< chip-specific */
+    kPORT_MuxAlt5 = 5U,             /*!< chip-specific */
+    kPORT_MuxAlt6 = 6U,             /*!< chip-specific */
+    kPORT_MuxAlt7 = 7U,             /*!< chip-specific */
+} port_mux_t;
+
+static inline void PORT_SetPinMux(PORT_Type *base, uint32_t pin, port_mux_t mux)
+{
+    base->PCR[pin] = (base->PCR[pin] & ~PORT_PCR_MUX_MASK) | PORT_PCR_MUX(mux);
+}
+
 int main(void) {
 
 	/* Write your code here */
@@ -130,7 +148,11 @@ int main(void) {
 	   1,
 	};
 
+	PORT_SetPinMux(PORTC, 5, kPORT_MuxAsGpio);
+
 	GPIO_PinInit(PTC_BASE_PTR, 5, &config);
+	GPIO_PinInit(PTC_BASE_PTR, 4, &config);
+	GPIO_PinInit(PTC_BASE_PTR, 6, &config);
 
 	//Port Data Output Register (GPIOC_PDOR)
 	//Port Set Output Register (GPIOC_PSOR)
