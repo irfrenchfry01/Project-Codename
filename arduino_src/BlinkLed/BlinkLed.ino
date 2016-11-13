@@ -13,7 +13,7 @@ void ToggleLed(void)
   uint32_t PortC = GPIOC_PSOR;
   PortC = PortC | (1<<5);
   GPIOC_PTOR = PortC;
-  delay(100);
+  delay(1000);
   //PortC = PortC | (1<<5);
   //GPIOC_PCOR = PortC;
   //delay(100);
