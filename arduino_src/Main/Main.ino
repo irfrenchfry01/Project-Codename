@@ -9,5 +9,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  gps.ReadCurrentLocation();
+  Serial.print("test");
+  delay(1000);
 }

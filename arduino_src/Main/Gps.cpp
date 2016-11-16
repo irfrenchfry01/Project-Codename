@@ -8,16 +8,16 @@
  #include <arduino.h>
  #include "Gps.h"
 
+ #define gpsSerial Serial1
+
  Gps::Gps()
  {
  }
 
  void Gps::Initialize()
  {
-   //Initialization code for the GPS module
-   PORTC_PCR5 = PORT_PCR_MUX(0x1);
-   GPIOC_PDDR = (1<<5);
-   GPIOC_PSOR = (1<<5);
+   //Initialization code for the serial interface
+   gpsSerial.begin(9600);
  }
 
  void Gps::Default()
@@ -27,8 +27,18 @@
 
  void Gps::ReadCurrentLocation()
  {
-   uint32_t PortC = GPIOC_PSOR;
-   PortC = PortC | (1<<5);
-   GPIOC_PTOR = PortC;
-   delay(1000);
  }
+
+ void Gps::WritePacket()
+ {
+   gpsSerial.print(cmd);
+ }
+
+ string Gps::GetPktTypeString(pktTypes pktType)
+ {
+   switch(pktType)
+   {
+     case PMTK_ACK: return
+   }
+ }
+
