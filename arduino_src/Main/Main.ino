@@ -1,4 +1,5 @@
 #include "Gps.h"
+#include "main.h"
 
 Gps gps;
 
