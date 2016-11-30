@@ -1,21 +1,61 @@
 #include "Gps.h"
 #include "main.h"
+#include <Wire.h>
+//#include "dof.h"
 
-Gps gps;
+#define TEENSY_LED  (1u<<5u)
+
+//Gps gps;
 
 void LedInit(void)
 {
   PORTC_PCR5 = PORT_PCR_MUX(0x1); //digital GPIO mode?
   GPIOC_PDDR = TEENSY_LED;
+  GPIOC_PSOR = TEENSY_LED;
+}
+
+void TimerInit(void)
+{
+  //turn on PIT
+  //PIT_MCR = 0x00;
+
+  //load value
+  //LDVAL = (period/clock period) - 1
+  //clock period = 20 ns
+  //PIT_LDVAL3 = 0x02FAF07F;
+  //PIT_TCTRL3 = (1<<1);
+  //PIT_TCTRL3 |= (1<<0);
+
+  /* --------- */
+  //ignore above
+  //setup for TPM1 (Timer / Pulse Width)
+  uint8_t TOIE = 6;
+  uint8_t CMOD = 3;
+  uint8_t PS = 0;
+  TPM1_SC |= (1<<TOIE) | (1<<CMOD) | (7<<PS);
+  
+}
+
+void ToggleLed(void)
+{
+  uint32_t PortC = GPIOC_PSOR;
+  PortC = PortC | (1<<5);
+  GPIOC_PTOR = PortC;
+  delay(1000);
 }
 
 void setup() {
-  // put your setup code here, to run once:
-  gps.Initialize();
+  Serial.begin(38400);
+
+  LedInit();
+
+  //gps.Initialize();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.print("test");
-  delay(1000);
+  //Serial.print("test");
+  //delay(1000);
+  ToggleLed();
+  
 }
