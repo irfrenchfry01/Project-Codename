@@ -1,7 +1,7 @@
 #include "Gps.h"
 #include "main.h"
 #include <Wire.h>
-//#include "dof.h"
+#include "imu.h"
 
 #define TEENSY_LED  (1u<<5u)
 
@@ -41,21 +41,29 @@ void ToggleLed(void)
   uint32_t PortC = GPIOC_PSOR;
   PortC = PortC | (1<<5);
   GPIOC_PTOR = PortC;
-  delay(1000);
+  //delay(1000);
 }
 
+Imu a;
+
 void setup() {
-  Serial.begin(38400);
+  //Serial.begin(38400);
 
   LedInit();
 
   //gps.Initialize();
+
+  a.InitImu();
+
 }
+
+  
 
 void loop() {
   // put your main code here, to run repeatedly:
   //Serial.print("test");
-  //delay(1000);
+  delay(1000);
   ToggleLed();
+  a.ReadAndPrintImuData();
   
 }
