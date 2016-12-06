@@ -41,7 +41,6 @@ void ToggleLed(void)
   uint32_t PortC = GPIOC_PSOR;
   PortC = PortC | (1<<5);
   GPIOC_PTOR = PortC;
-  //delay(1000);
 }
 
 Imu a;
@@ -54,7 +53,9 @@ void setup() {
   //gps.Initialize();
 
   a.InitImu();
-
+  
+  delay(1000);
+  a.displaySensorDetails();
 }
 
   

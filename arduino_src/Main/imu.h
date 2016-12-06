@@ -13,14 +13,11 @@
 #ifndef imu_h
 #define imu_h
 
-#define BLUE 1
-
 class Imu{
   public:
+   void displaySensorDetails(void);
    void InitImu(void);
    void ReadAndPrintImuData(void);
 };
-
-//void ReadAndPrintImuData(void);
 
 #endif
