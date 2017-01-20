@@ -2,6 +2,9 @@
  * File name:   kalman.cpp
  * Author:      Garrett Clay
  * Description: Kalman filter.
+ * 
+ * https://github.com/TKJElectronics/KalmanFilter/blob/master/Kalman.cpp
+ * 
  */
 
  #include "kalman.h"

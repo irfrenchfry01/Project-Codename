@@ -8,10 +8,10 @@
 #ifndef Gps_h
 #define Gps_h
 
-#include "arduino.h"
+//#include "arduino.h"
 
 
-
+/*
 class Gps
 {
   //Definitions
@@ -20,17 +20,18 @@ class Gps
   #define dataEnd  "*"
   #define pktEnd   "\r\n"
 
-  private enum pktTypes {
+  enum pktTypes {
     PMTK_ACK,
     PMTK_SYS_MSG
   };
   
   public:
-    Gps();
+    //Gps();
     void Initialize();
     void Default();
     void ReadCurrentLocation();
     void WritePacket(String cmd);
 };
+*/
 
 #endif

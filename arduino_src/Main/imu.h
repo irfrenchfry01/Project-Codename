@@ -2,6 +2,7 @@
  * File name:   imu.h
  * Author:      Garrett Clay
  * Description: IMU (inertial measurement unit) header file.
+ *              Includes accelerometer, gyro and magnetometer control.
  */
 /*
 #include <Wire.h>

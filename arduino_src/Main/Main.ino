@@ -2,6 +2,7 @@
 #include "main.h"
 #include <Wire.h>
 #include "imu.h"
+#include "kalman.h"
 
 #define TEENSY_LED  (1u<<5u)
 

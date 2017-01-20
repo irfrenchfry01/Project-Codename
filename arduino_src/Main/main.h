@@ -4,4 +4,14 @@
  * Desc.: 	Header file for main.ino.
  */
 
-#define TEENSY_LED  (1u<<5u)
+#ifdef main_h
+#define main_h
+
+  
+
+
+
+
+
+
+#endif
