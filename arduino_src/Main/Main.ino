@@ -3,10 +3,10 @@
 #include <Wire.h>
 #include "imu.h"
 #include "kalman.h"
+#include "motor.h"
 
-#define TEENSY_LED  (1u<<5u)
-
-//Gps gps;
+Imu Imu;
+motor motor;
 
 void LedInit(void)
 {
@@ -44,28 +44,29 @@ void ToggleLed(void)
   GPIOC_PTOR = PortC;
 }
 
-Imu a;
-
 void setup() {
   //Serial.begin(38400);
 
   LedInit();
+  motor.InitMotorPins();
 
-  //gps.Initialize();
-
-  a.InitImu();
+  Imu.InitImu();
   
   delay(1000);
-  a.displaySensorDetails();
+  Imu.displaySensorDetails();
 }
 
-  
+  static uint8_t IncSpeed = 20;  
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  //Serial.print("test");
+  //test code for motor control
+  IncSpeed += 20;  
+  if(IncSpeed > 100) { IncSpeed = 20; }
+  motor.SetMotorSpeed(FL, IncSpeed);
+  //end test code for motor control
+  
   delay(1000);
   ToggleLed();
-  a.ReadAndPrintImuData();
+  Imu.ReadAndPrintImuData();
   
 }
