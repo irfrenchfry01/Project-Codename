@@ -5,6 +5,8 @@
 #include "kalman.h"
 #include "motor.h"
 
+#define TEENSY_LED  (1u<<5u)  
+
 Imu Imu;
 motor motor;
 
@@ -56,17 +58,20 @@ void setup() {
   Imu.displaySensorDetails();
 }
 
-  static uint8_t IncSpeed = 20;  
+  static uint8_t count = 0;
 
 void loop() {
-  //test code for motor control
-  IncSpeed += 20;  
-  if(IncSpeed > 100) { IncSpeed = 20; }
-  motor.SetMotorSpeed(FL, IncSpeed);
-  //end test code for motor control
+
   
   delay(1000);
   ToggleLed();
   Imu.ReadAndPrintImuData();
+
+  motor.SetMotorSpeed(FL, 50);
+  motor.SetMotorSpeed(FR, 50);
+  motor.SetMotorSpeed(BL, 50);
+  motor.SetMotorSpeed(BR, 50);  
+  
+  count++;
   
 }

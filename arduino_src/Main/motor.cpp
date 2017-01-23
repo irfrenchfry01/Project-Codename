@@ -36,3 +36,19 @@ void motor::SetMotorSpeed(MotorId_t Motor, uint8_t SpeedPercent)
   }
 }
 
+/*
+ *  @brief turns off all motors and hangs program
+ *  
+ *  IMPORTANT program enters while loop
+ *  after motors are turned off
+ */
+void motor::EmergencyMotorOff(void)
+{
+  SetMotorSpeed(FL, MOTOR_OFF);
+  SetMotorSpeed(FR, MOTOR_OFF);
+  SetMotorSpeed(BL, MOTOR_OFF);
+  SetMotorSpeed(BR, MOTOR_OFF);
+
+  while(true);
+}
+

@@ -9,6 +9,8 @@
 
 #include <stdint.h>
 
+#define MOTOR_OFF 0u
+
 typedef enum _MotorId_t{
   FL = 2,   //front left motor
   FR = 3,   //front right motor
@@ -25,6 +27,8 @@ class motor {
     //set motor speed
     void SetMotorSpeed(MotorId_t Motor, uint8_t SpeedPercent);
 
+    //turns all motors off and hangs program
+    void EmergencyMotorOff(void);
   private:
 
 };

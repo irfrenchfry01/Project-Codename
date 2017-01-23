@@ -33,7 +33,7 @@
 #ifdef main_h
 #define main_h
 
-#define TEENSY_LED  (1u<<5u)  
+
 
 
 
