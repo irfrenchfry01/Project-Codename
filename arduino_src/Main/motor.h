@@ -4,8 +4,8 @@
  * Description: motor controller
  */
 
-#ifndef motor_h
-#define motor_h
+#ifndef MOTOR_H
+#define MOTOR_H
 
 #include <stdint.h>
 

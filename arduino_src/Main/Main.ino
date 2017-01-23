@@ -4,6 +4,7 @@
 #include "imu.h"
 #include "kalman.h"
 #include "motor.h"
+#include "FlightCtrl.h"
 
 #define TEENSY_LED  (1u<<5u)  
 
