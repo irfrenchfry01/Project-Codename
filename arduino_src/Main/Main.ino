@@ -5,8 +5,11 @@
 #include "kalman.h"
 #include "motor.h"
 #include "FlightCtrl.h"
+#include "Navigation.h"
 
 #define TEENSY_LED  (1u<<5u)  
+ 
+static uint8_t count = 0;
 
 Imu Imu;
 motor motor;
@@ -47,7 +50,8 @@ void ToggleLed(void)
   GPIOC_PTOR = PortC;
 }
 
-void setup() {
+void GarrettSetup()
+{
   //Serial.begin(38400);
 
   LedInit();
@@ -59,11 +63,7 @@ void setup() {
   Imu.displaySensorDetails();
 }
 
-  static uint8_t count = 0;
-
-void loop() {
-
-  
+void GarrettLoop() {
   delay(1000);
   ToggleLed();
   Imu.ReadAndPrintImuData();
@@ -74,5 +74,13 @@ void loop() {
   motor.SetMotorSpeed(BR, 50);  
   
   count++;
-  
 }
+
+void setup() {
+  GarrettSetup();
+}
+
+void loop() {
+  GarrettLoop();  
+}
+

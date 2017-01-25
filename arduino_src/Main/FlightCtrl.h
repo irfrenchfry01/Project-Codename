@@ -10,7 +10,8 @@
 #include <stdint.h>
 
 
-class FlightCtrl{
+class FlightCtrl
+{
   public:
 
 
