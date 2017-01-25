@@ -9,9 +9,11 @@
 
 class Navigation{
   public:
-
+    void NavInitialize();
+    void GetCurrentLocation();
 
   private:
+  
 };
 
 #endif

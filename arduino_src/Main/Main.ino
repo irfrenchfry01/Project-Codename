@@ -13,6 +13,7 @@ static uint8_t count = 0;
 
 Imu Imu;
 motor motor;
+Navigation Nav;
 
 void LedInit(void)
 {
@@ -76,11 +77,27 @@ void GarrettLoop() {
   count++;
 }
 
+void BrandonSetup()
+{
+  Serial.begin(115200);
+  Nav.NavInitialize();
+}
+
+void BrandonLoop()
+{
+  //while(true)
+  //{
+    Nav.GetCurrentLocation();
+    //delay(10);
+  //}
+}
 void setup() {
-  GarrettSetup();
+  //GarrettSetup();
+  BrandonSetup();
 }
 
 void loop() {
-  GarrettLoop();  
+  //GarrettLoop(); 
+  BrandonLoop(); 
 }
 
