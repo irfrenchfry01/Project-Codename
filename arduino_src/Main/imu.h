@@ -19,6 +19,13 @@ class Imu{
    void displaySensorDetails(void);
    void InitImu(void);
    void ReadAndPrintImuData(void);
+   double GetAx(void);
+   double GetAy(void);
+   double GetAz(void);
+   
+   double GetGx(void);
+   double GetGy(void);
+   double GetGz(void);
 };
 
 #endif

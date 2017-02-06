@@ -111,3 +111,57 @@ void Imu::ReadAndPrintImuData(void)
   Serial.println(F(""));
 }
 
+//Get functions
+/*
+ *  @brief Get accelerometer value in x
+ *  in m/s^2
+ */
+double Imu::GetAx(void)
+{
+  sensors_event_t event;
+  accel.getEvent(&event);
+  return event.acceleration.x;
+}
+
+/*
+ *  @brief Get accelerometer value in y
+ *  in m/s^2
+ */
+double Imu::GetAy(void)
+{
+  sensors_event_t event;
+  accel.getEvent(&event);
+  return event.acceleration.y;
+}
+
+/*
+ *  @brief Get accelerometer value in z
+ *  in m/s^2
+ */
+double Imu::GetAz(void)
+{
+  sensors_event_t event;
+  accel.getEvent(&event);
+  return event.acceleration.z;
+}
+
+double Imu::GetGx(void)
+{
+  sensors_event_t event;
+  gyro.getEvent(&event);
+  return event.gyro.x;
+}
+
+double Imu::GetGy(void)
+{
+  sensors_event_t event;
+  gyro.getEvent(&event);
+  return event.gyro.y;
+}
+
+double Imu::GetGz(void)
+{
+  sensors_event_t event;
+  gyro.getEvent(&event);
+  return event.gyro.z;
+}

@@ -4,10 +4,10 @@
  * Description: Kalman filter.
  */
 
-#ifndef imu_h
-#define imu_h
+#ifndef kalman_h
+#define kalman_h
 
-class kalman {
+class kalman{
   public:
     kalman();
 

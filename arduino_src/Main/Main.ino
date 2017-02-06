@@ -14,6 +14,8 @@ static uint8_t count = 0;
 Imu Imu;
 motor motor;
 Navigation Nav;
+FlightCtrl Fc;
+kalman k;
 
 void LedInit(void)
 {
@@ -65,14 +67,40 @@ void GarrettSetup()
 }
 
 void GarrettLoop() {
+  double Ax, Ay, Az = 0;
+  double Roll, Pitch = 0;
+  double GxRaw = 0;
+  double Gx = 0;
+  float kRoll = 0;
+  
   delay(1000);
   ToggleLed();
-  Imu.ReadAndPrintImuData();
+  //Imu.ReadAndPrintImuData();
+  Ax = Imu.GetAx();
+  Ay = Imu.GetAy();
+  Az = Imu.GetAz();
+  //Serial.print("Ay: "); Serial.print(Ay); Serial.println(" ");
+  //Serial.print("Az: "); Serial.print(Az); Serial.println(" ");
 
-  motor.SetMotorSpeed(FL, 50);
-  motor.SetMotorSpeed(FR, 50);
-  motor.SetMotorSpeed(BL, 50);
-  motor.SetMotorSpeed(BR, 50);  
+  Roll = Fc.CalcRoll(Ax, Ay, Az);
+  Pitch = Fc.CalcPitch(Ax, Ay, Az);
+
+  Serial.print("Raw Roll: "); Serial.print(Roll); Serial.println(" ");
+  //Serial.print("   Raw Pitch: "); Serial.print(Pitch); Serial.println(" ");
+
+  GxRaw = Imu.GetGx();
+  Gx = Fc.GetGx(GxRaw);
+  //Serial.print("Gx: "); Serial.print(Gx); Serial.println(" ");
+
+  // angle in degrees, rate in degrees per second, delta in seconds
+  //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
+  kRoll = k.GetAngle(Roll, Gx, 1);
+  Serial.print(" kRoll: "); Serial.print(kRoll); Serial.println(" ");
+
+  //motor.SetMotorSpeed(FL, 50);
+  //motor.SetMotorSpeed(FR, 50);
+  //motor.SetMotorSpeed(BL, 50);
+  //motor.SetMotorSpeed(BR, 50);  
   
   count++;
 }
@@ -92,12 +120,12 @@ void BrandonLoop()
   //}
 }
 void setup() {
-  //GarrettSetup();
-  BrandonSetup();
+  GarrettSetup();
+  //BrandonSetup();
 }
 
 void loop() {
-  //GarrettLoop(); 
-  BrandonLoop(); 
+  GarrettLoop(); 
+  //BrandonLoop(); 
 }
 
