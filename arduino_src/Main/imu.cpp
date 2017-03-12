@@ -145,6 +145,10 @@ double Imu::GetAz(void)
   return event.acceleration.z;
 }
 
+/*
+ *  @brief Get gyro value in x
+ *  in rad/s
+ */
 double Imu::GetGx(void)
 {
   sensors_event_t event;
@@ -152,6 +156,10 @@ double Imu::GetGx(void)
   return event.gyro.x;
 }
 
+/*
+ *  @brief Get gyro value in y
+ *  in rad/s
+ */
 double Imu::GetGy(void)
 {
   sensors_event_t event;
@@ -159,6 +167,10 @@ double Imu::GetGy(void)
   return event.gyro.y;
 }
 
+/*
+ *  @brief Get gyro value in z
+ *  in rad/s
+ */
 double Imu::GetGz(void)
 {
   sensors_event_t event;
