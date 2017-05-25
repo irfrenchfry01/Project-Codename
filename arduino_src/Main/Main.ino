@@ -97,10 +97,10 @@ void GarrettLoop() {
   kRoll = k.GetAngle(Roll, Gx, 1);
   Serial.print(" kRoll: "); Serial.print(kRoll); Serial.println(" ");
 
-  //motor.SetMotorSpeed(FL, 50);
-  //motor.SetMotorSpeed(FR, 50);
-  //motor.SetMotorSpeed(BL, 50);
-  //motor.SetMotorSpeed(BR, 50);  
+  motor.SetMotorSpeed(FL, 50);
+  motor.SetMotorSpeed(FR, 50);
+  motor.SetMotorSpeed(BL, 50);
+  motor.SetMotorSpeed(BR, 50);  
   
   count++;
 }

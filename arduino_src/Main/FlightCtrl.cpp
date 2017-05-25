@@ -9,8 +9,8 @@
 #include <Wire.h>
 
 
-double pitch, roll;
-double ax, ay, az;  //accelerometer input
+//double pitch, roll;
+//double ax, ay, az;  //accelerometer input
 
 /**
 * @brief calculate roll using accelerometer data
