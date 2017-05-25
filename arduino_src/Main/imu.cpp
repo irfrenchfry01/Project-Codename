@@ -177,3 +177,37 @@ double Imu::GetGz(void)
   gyro.getEvent(&event);
   return event.gyro.z;
 }
+
+/*
+ * @brief Get magnetometer value in x
+ * in uT (micro Tesla)
+ */
+double Imu::GetMx(void)
+{
+  sensors_event_t event;
+  mag.getEvent(&event);
+  return event.magnetic.x;
+}
+
+/*
+ * @brief Get magnetometer value in y
+ * in uT (micro Tesla)
+ */
+double Imu::GetMy(void)
+{
+  sensors_event_t event;
+  mag.getEvent(&event);
+  return event.magnetic.y;
+}
+
+/*
+ * @brief Get magnetometer value in z
+ * in uT (micro Tesla)
+ */
+double Imu::GetMz(void)
+{
+  sensors_event_t event;
+  mag.getEvent(&event);
+  return event.magnetic.z;
+}
+

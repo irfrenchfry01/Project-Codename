@@ -26,6 +26,10 @@ class Imu{
    double GetGx(void);
    double GetGy(void);
    double GetGz(void);
+
+   double GetMx(void);
+   double GetMy(void);
+   double GetMz(void);
 };
 
 #endif
