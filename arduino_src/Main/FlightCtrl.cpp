@@ -15,9 +15,11 @@
 /**
 * @brief calculate roll using accelerometer data
 * 
-* param[in] ax  accelerometer data in x-axis  
-* param[in] ay  accelerometer data in y-axis
-* param[in] az  accelerometer data in z-axis
+* param[in] ax  accelerometer data in x-axis (units m/s^2)
+* param[in] ay  accelerometer data in y-axis (units m/s^2)
+* param[in] az  accelerometer data in z-axis (units m/s^2)
+* 
+* retval    roll  angle of roll in degrees
 */
 double FlightCtrl::CalcRoll(double ax, double ay, double az)
 {
@@ -28,9 +30,11 @@ double FlightCtrl::CalcRoll(double ax, double ay, double az)
 /**
 * @brief calculate pitch using accelerometer data
 * 
-* param[in] ax  accelerometer data in x-axis  
-* param[in] ay  accelerometer data in y-axis
-* param[in] az  accelerometer data in z-axis
+* param[in] ax  accelerometer data in x-axis (units m/s^2)
+* param[in] ay  accelerometer data in y-axis (units m/s^2)
+* param[in] az  accelerometer data in z-axis (units m/s^2)
+* 
+* retval    pitch angle of pitch in degrees
 */
 double FlightCtrl::CalcPitch(double ax, double ay, double az)
 {
@@ -39,13 +43,16 @@ double FlightCtrl::CalcPitch(double ax, double ay, double az)
 }
 
 /**
-* @brief convert gyro x-axis data to degrees
+* @brief convert gyro x-axis data to deg/s
 * 
-* param[in] GxRaw  accelerometer data in x-axis  
+* param[in] GxRaw  accelerometer data in x-axis in rad/s
+* 
+* retval    GxDeg  gyro x-axis data in deg/s
 */
 double FlightCtrl::GetGx(double GxRaw)
 {
-  return ((GxRaw *180)/M_PI);
+  double GxDeg = ((GxRaw *180)/M_PI);
+  return GxDeg;
 }
 
 //*******************************************

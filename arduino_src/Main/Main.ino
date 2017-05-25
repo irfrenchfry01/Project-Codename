@@ -67,10 +67,10 @@ void GarrettSetup()
 }
 
 void GarrettLoop() {
-  double Ax, Ay, Az = 0;
-  double Roll, Pitch = 0;
-  double GxRaw = 0;
-  double Gx = 0;
+  double Ax, Ay, Az = 0;    //in m/s^2
+  double RollDeg, PitchDeg = 0;   //in degrees
+  double GxRaw = 0;         //in rad/s
+  double GxDegPerSec = 0;            //in deg/s
   float kRoll = 0;
   
   delay(1000);
@@ -82,19 +82,19 @@ void GarrettLoop() {
   //Serial.print("Ay: "); Serial.print(Ay); Serial.println(" ");
   //Serial.print("Az: "); Serial.print(Az); Serial.println(" ");
 
-  Roll = Fc.CalcRoll(Ax, Ay, Az);
-  Pitch = Fc.CalcPitch(Ax, Ay, Az);
+  RollDeg = Fc.CalcRoll(Ax, Ay, Az);
+  PitchDeg = Fc.CalcPitch(Ax, Ay, Az);
 
-  Serial.print("Raw Roll: "); Serial.print(Roll); Serial.println(" ");
-  //Serial.print("   Raw Pitch: "); Serial.print(Pitch); Serial.println(" ");
+  Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
+  //Serial.print("   Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
 
   GxRaw = Imu.GetGx();
-  Gx = Fc.GetGx(GxRaw);
-  //Serial.print("Gx: "); Serial.print(Gx); Serial.println(" ");
+  GxDegPerSec = Fc.GetGx(GxRaw);
+  //Serial.print("GxDegPerSec: "); Serial.print(GxDegPerSec); Serial.println(" ");
 
   // angle in degrees, rate in degrees per second, delta in seconds
   //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
-  kRoll = k.GetAngle(Roll, Gx, 1);
+  kRoll = k.GetAngle(RollDeg, GxDegPerSec, 1);
   Serial.print(" kRoll: "); Serial.print(kRoll); Serial.println(" ");
 
   motor.SetMotorSpeed(FL, 50);
