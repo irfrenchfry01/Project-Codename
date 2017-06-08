@@ -55,6 +55,66 @@ double FlightCtrl::GetGx(double GxRaw)
   return GxDeg;
 }
 
+/**
+ * @brief adjusts drone pitch 
+ * 
+ * @param[in] Pitch       angle between FL/FR and horizontal (degrees)
+ */
+void PitchCtrl(double Pitch)
+{
+  // if drone is tilted backwards
+  if(Pitch > (ZERO + PITCH_TOLERANCE))
+  {
+    //decrease FL/FR motor speeds
+    //increase BL/BR motor speeds
+  }
+  else if(Pitch < (ZERO - PITCH_TOLERANCE))
+  {
+    //increase FL/FR motor speeds
+    //decrease BL/BR motor speeds
+  }
+  else
+  {
+    //don't. change. anything. 
+  }
+
+
+}
+
+/**
+ * @brief calculate angualr velocity from kalman filtered pitch
+ * 
+ * must be called at least twice
+ * 
+ * @param[in]   Pitch       current pitch angle in degrees
+ * @param[in]   DeltaTime   change in time between pitch measurements (seconds)
+ * 
+ * @retval      AngVel  angular velocity in deg/sec
+ */
+double CalcAngularVelFromPitch(double Pitch, double DeltaTime)
+{
+  static double PrevPitch = 0;
+  static bool InitVal = true;
+  double AngVel = 0;
+
+  if(true == InitVal)
+  {
+    PrevPitch = Pitch;
+    InitVal = false;
+  }
+  else
+  {
+    //store new value
+    PrevPitch = PrevPitch - Pitch;
+  
+    //calculate angular velocity
+    AngVel = PrevPitch / DeltaTime;
+  }
+
+  return AngVel;
+}
+
+
 //*******************************************
 // below, deprecated code - depends on needs
 //*******************************************
