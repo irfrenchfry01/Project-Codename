@@ -1,6 +1,6 @@
 #include<iostream>
 #include "./Modules/WaypointCalc.h"
-
+//test
 void PrintMenu()
 {
 	std::cout<<"\nNavigation Algroithm Test\n";
