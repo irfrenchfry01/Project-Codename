@@ -22,6 +22,7 @@ class WaypointCalc
 		void PushWaypoint(std::string Latitude, std::string Longitude);
 		void PopWaypoint(); 
 		void ReadCurrentWaypoint();
+		float GetBearing();
 };
 
 #endif

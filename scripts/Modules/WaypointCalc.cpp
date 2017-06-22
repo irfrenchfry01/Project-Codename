@@ -48,3 +48,15 @@ void WaypointCalc::ReadCurrentWaypoint()
 	}
 }	
 
+float WaypointCalc::GetBearing()
+{
+	if(waypointsWriteIndex >= 2 && waypointsReadIndex <= waypointsWriteIndex - 1)
+	{
+		
+	}
+	else
+	{
+		std::cout<<"ERROR: Not enough points have been loaded into the queue\n";
+	}
+	return 0.0;
+}
