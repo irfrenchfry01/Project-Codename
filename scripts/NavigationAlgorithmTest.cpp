@@ -3,8 +3,9 @@
 
 void PrintMenu()
 {
-	std::cout<<"Navigation Algroithm Test\n";
+	std::cout<<"\nNavigation Algroithm Test\n";
 	std::cout<<"+: Add waypoint (Lat: xx.xxxxxx, Long: yy.yyyyyy)\n";
+	std::cout<<"-: Remove current waypoint\n";	
 	std::cout<<"r: Read Current Waypoint\n";	
 	std::cout<<"q: Quit\n";
 }
@@ -35,12 +36,21 @@ int main()
 		}
 		else if(cmd.compare("+")==0)
 		{
-			wayptCalc.PushWaypoint("TestLat0", "TestLong0");	
-//			wayptCalc.PushWaypoint("TestLat1", "TestLong1");	
+			std::string lat;
+			std::string lon;
+			std::cout<<"Enter Latitude in the following format (xx.xxxxxx)\n";
+			std::getline(std::cin, lat);
+			std::cout<<"Enter Longitude in the following format (yy.yyyyyy)\n";
+			std::getline(std::cin, lon);
+			wayptCalc.PushWaypoint(lat, lon);
+		}
+		else if(cmd.compare("-")==0)
+		{
+			wayptCalc.PopWaypoint();
 		}
 		else if(cmd.compare("r")==0)
 		{
-//			wayptCalc.ReadCurrentWaypoint();
+			wayptCalc.ReadCurrentWaypoint();
 		}
 		else
 		{

@@ -11,13 +11,14 @@ struct waypoint {
 	bool Valid;
 };
 
-waypoint waypoints[MAXPOINTS];	
-int waypointsWriteIndex = 0;
-int waypointsReadIndex = 0;
-
 class WaypointCalc
 {
-	public:
+	private:
+		waypoint waypoints[MAXPOINTS];	
+		int waypointsWriteIndex;
+		int waypointsReadIndex;
+
+	public: 
 		void PushWaypoint(std::string Latitude, std::string Longitude);
 		void PopWaypoint(); 
 		void ReadCurrentWaypoint();

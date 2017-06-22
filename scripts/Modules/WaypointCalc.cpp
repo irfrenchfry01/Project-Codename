@@ -1,18 +1,18 @@
 #include<iostream>
 #include "WaypointCalc.h"
 
-void PushWaypoint(std::string Latitude, std::string Longitude)
+void WaypointCalc::PushWaypoint(std::string Latitude, std::string Longitude)
 {
 	if(waypointsWriteIndex < MAXPOINTS)
 	{
-		waypoint waypt = new waypoint;
+		waypoint waypt;
 		waypt.Latitude = Latitude;
 		waypt.Longitude = Longitude;
 		waypt.Valid = true;
 
 		//Push into the array
 		waypoints[waypointsWriteIndex] = waypt;
-		waypointsIndex++;
+		waypointsWriteIndex++;
 		std::cout << "Waypoint Added\n";
 	}
 	else
@@ -21,11 +21,11 @@ void PushWaypoint(std::string Latitude, std::string Longitude)
 	}
 }
 
-void PopWaypoint()
+void WaypointCalc::PopWaypoint()
 {
 	if(waypointsReadIndex <= waypointsWriteIndex)
 	{
-		waypoints[waypointsReadindex].Valid = false;
+		waypoints[waypointsReadIndex].Valid = false;
 	  waypointsReadIndex++;
 		std::cout << "Waypoint Removed\n";
 	}
@@ -35,7 +35,7 @@ void PopWaypoint()
 	}
 }
 
-void ReadCurrentWaypoint()
+void WaypointCalc::ReadCurrentWaypoint()
 {
 	if(waypoints[waypointsReadIndex].Valid == true)
 	{
