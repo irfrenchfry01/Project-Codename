@@ -1,9 +1,11 @@
 #include<iostream>
+#include "./Modules/WaypointCalc.h"
 
 void PrintMenu()
 {
 	std::cout<<"Navigation Algroithm Test\n";
 	std::cout<<"+: Add waypoint (Lat: xx.xxxxxx, Long: yy.yyyyyy)\n";
+	std::cout<<"r: Read Current Waypoint\n";	
 	std::cout<<"q: Quit\n";
 }
 
@@ -16,13 +18,9 @@ std::string GetCommand()
 	return cmd;
 }
 
-void AddPoint()
-{
-
-}
-
 int main()
 {
+	WaypointCalc wayptCalc;
 	bool exit = false;
 	std::string cmd = "";
 	while(!exit)
@@ -34,6 +32,15 @@ int main()
 		{
 			std::cout<<"Exiting Script";
 			exit = true;	
+		}
+		else if(cmd.compare("+")==0)
+		{
+			wayptCalc.PushWaypoint("TestLat0", "TestLong0");	
+//			wayptCalc.PushWaypoint("TestLat1", "TestLong1");	
+		}
+		else if(cmd.compare("r")==0)
+		{
+//			wayptCalc.ReadCurrentWaypoint();
 		}
 		else
 		{
