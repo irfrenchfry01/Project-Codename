@@ -1,7 +1,8 @@
 #include<iostream>
+#include<math.h>
 #include "WaypointCalc.h"
 
-void WaypointCalc::PushWaypoint(std::string Latitude, std::string Longitude)
+void WaypointCalc::PushWaypoint(float Latitude, float Longitude)
 {
 	if(waypointsWriteIndex < MAXPOINTS)
 	{
@@ -50,13 +51,23 @@ void WaypointCalc::ReadCurrentWaypoint()
 
 float WaypointCalc::GetBearing()
 {
+	float angle = 0.0;
 	if(waypointsWriteIndex >= 2 && waypointsReadIndex <= waypointsWriteIndex - 1)
 	{
-		
+		float lat1 = waypoints[waypointsReadIndex].Latitude;
+		float long1 = waypoints[waypointsReadIndex].Longitude;
+		float lat2 = waypoints[waypointsReadIndex+1].Latitude;
+		float long2 = waypoints[waypointsReadIndex+1].Longitude;
+		float dy = lat2 - lat1;
+		//std::cout<<"dy: " << dy;
+		float dx = cosf(M_PI/180 * lat1)*(long2 - long1);
+		//std::cout<<"dx: " << dx;
+		angle = atan2f(dy, dx);		
+		//std::cout<<"angle: " << angle;
 	}
-	else
+  else
 	{
 		std::cout<<"ERROR: Not enough points have been loaded into the queue\n";
 	}
-	return 0.0;
+	return angle;
 }

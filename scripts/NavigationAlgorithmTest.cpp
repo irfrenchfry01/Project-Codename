@@ -7,6 +7,7 @@ void PrintMenu()
 	std::cout<<"+: Add waypoint (Lat: xx.xxxxxx, Long: yy.yyyyyy)\n";
 	std::cout<<"-: Remove current waypoint\n";	
 	std::cout<<"r: Read Current Waypoint\n";	
+	std::cout<<"b: Get bearing between next two waypoints\n";
 	std::cout<<"q: Quit\n";
 }
 
@@ -36,13 +37,18 @@ int main()
 		}
 		else if(cmd.compare("+")==0)
 		{
+			std::string::size_type sz;
 			std::string lat;
 			std::string lon;
+			float latf;
+			float lonf;
 			std::cout<<"Enter Latitude in the following format (xx.xxxxxx)\n";
 			std::getline(std::cin, lat);
 			std::cout<<"Enter Longitude in the following format (yy.yyyyyy)\n";
 			std::getline(std::cin, lon);
-			wayptCalc.PushWaypoint(lat, lon);
+			latf = std::stof(lat, &sz);
+			lonf = std::stof(lon, &sz);
+			wayptCalc.PushWaypoint(latf, lonf);
 		}
 		else if(cmd.compare("-")==0)
 		{
@@ -51,6 +57,10 @@ int main()
 		else if(cmd.compare("r")==0)
 		{
 			wayptCalc.ReadCurrentWaypoint();
+		}
+		else if(cmd.compare("b")==0)
+		{
+			std::cout<<"Bearing: " << wayptCalc.GetBearing();
 		}
 		else
 		{

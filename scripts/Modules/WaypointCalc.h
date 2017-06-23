@@ -6,8 +6,8 @@
 
 //Global Variables
 struct waypoint {
-	std::string Latitude;
-	std::string Longitude;
+	float Latitude;
+	float Longitude;
 	bool Valid;
 };
 
@@ -19,7 +19,7 @@ class WaypointCalc
 		int waypointsReadIndex;
 
 	public: 
-		void PushWaypoint(std::string Latitude, std::string Longitude);
+		void PushWaypoint(float Latitude, float Longitude);
 		void PopWaypoint(); 
 		void ReadCurrentWaypoint();
 		float GetBearing();
