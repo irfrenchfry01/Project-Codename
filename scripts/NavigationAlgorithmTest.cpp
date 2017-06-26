@@ -8,6 +8,7 @@ void PrintMenu()
 	std::cout<<"-: Remove current waypoint\n";	
 	std::cout<<"r: Read Current Waypoint\n";	
 	std::cout<<"b: Get bearing between next two waypoints\n";
+	std::cout<<"d: Get distance between next two waypoints\n";
 	std::cout<<"q: Quit\n";
 }
 
@@ -61,6 +62,10 @@ int main()
 		else if(cmd.compare("b")==0)
 		{
 			std::cout<<"Bearing: " << wayptCalc.GetBearing();
+		}
+		else if(cmd.compare("d")==0)
+		{
+			std::cout<<"Distance: " << wayptCalc.GetDistance(30000.0);
 		}
 		else
 		{

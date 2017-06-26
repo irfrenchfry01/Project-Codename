@@ -23,6 +23,7 @@ class WaypointCalc
 		void PopWaypoint(); 
 		void ReadCurrentWaypoint();
 		float GetBearing();
+		float GetDistance();
 };
 
 #endif
