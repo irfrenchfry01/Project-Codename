@@ -65,7 +65,7 @@ int main()
 		}
 		else if(cmd.compare("d")==0)
 		{
-			std::cout<<"Distance: " << wayptCalc.GetDistance(30000.0);
+			std::cout<<"Distance: " << wayptCalc.GetDistance(6371);
 		}
 		else
 		{

@@ -95,7 +95,7 @@ float WaypointCalc::GetDistance(float altitude)
 		float dx = lat2 - lat1;
 		float dy = lon2 - lon1;
 
-		float a = sin2(dx/2) + cos(lat1) * cos(lat2) * sin2(dy/2);
+		float a = sin(dx/2) * sin(dx/2) + cos(lat1) * cos(lat2) * sin(dy/2) * sin(dy/2);
 		float sa = sqrt(a);
 		float ssa = sqrt(1-a);
 		float c = 2 * atan2(sa, ssa);
