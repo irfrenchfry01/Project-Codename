@@ -113,11 +113,18 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
-  //while(true)
-  //{
-    Nav.GetCurrentLocation();
+  int incomingByte = 0;
+  while(true)
+  {
+    //Read the serial command
+    incomingByte = Serial.read();  
+    if(incomingByte == 0x52)
+    {
+      Serial.print("Received code for coordinate read");
+    }
+    //Nav.GetCurrentLocation();
     //delay(10);
-  //}
+  }
 }
 void setup() {
   GarrettSetup();
