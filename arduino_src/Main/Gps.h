@@ -10,8 +10,6 @@
 
 #include "arduino.h"
 
-class Gps
-{
   //Definitions
 
   //GPS Serial Interface=
@@ -62,13 +60,34 @@ class Gps
   //Acknowldgement
   #define PMTK_ACK "$PMTK001,"
 
+  //extern float timeData;
+  //extern float latitude;
+  //extern String latitudeQuad;
+//  extern float longitude;
+//  extern String longitudeQuad;
+//  extern int fixQuality;
+//  extern int numSats;
+//  extern float horDilution;
+//  extern float altInMeters;
+
+class Gps
+{
   public:
-    float latitude;
-    float longitude;
-    //This acts as a semaphore for the data, so that data isn't modified during the interrupt if the main thread is using it.
-    bool dataLocked;
-    //This gets set true when new data is stored, and then set false when the data is used by the main thread.
-    bool dataValid;
+    //Parameters
+//    float timeData = 0.0;
+//    float latitude = 0.0;
+//    String latitudeQuad = "N";
+//    float longitude = 0.0;
+//    String longitudeQuad = "W";
+//    int fixQuality = 0;
+//    int numSats = 0;
+//    float horDilution = 0.0;
+//    float altInMeters = 0.0;
+//    
+//    //This acts as a semaphore for the data, so that data isn't modified during the interrupt if the main thread is using it.
+//    bool dataLocked = false;
+//    //This gets set true when new data is stored, and then set false when the data is used by the main thread.
+//    bool dataValid = false;
     
     //Gps();
     void Initialize();

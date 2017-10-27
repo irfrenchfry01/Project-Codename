@@ -16,6 +16,8 @@ motor motor;
 Navigation Nav;
 FlightCtrl Fc;
 kalman k;
+//This is temporary. This will be put into navigation class
+//Gps gps;
 
 void LedInit(void)
 {
@@ -113,28 +115,26 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
-  Serial.println("I am in the normal loop");
-  delay(10000);
-  /*
-  int incomingByte = 0;
-  Serial.print("Please enter a command\n");
-  while(true)
-  {
-    //Read the serial command
-    delay(10);
-    if(Serial.available() > 0)
-    {
-      incomingByte = Serial.read();  
-      
-      //114 is the ascii code for 'r'
-      if(incomingByte == 114)
-      {
-        Serial.print("Read character detected\n");
-        Nav.GetCurrentLocation();
-      }
-    }
-  }
-  */
+//  char incomingChar;
+//    if(Serial.available() > 0)
+//    {
+//      incomingChar = Serial.read();  
+//      
+//      //114 is the ascii code for 'r'
+//      if(incomingChar == 114)
+//      {
+//        Serial.print("Read character detected\n");
+////        if(gps.dataLocked)
+////        {
+////          Serial.print("Data Locked");
+////        }
+////        else
+////        {
+////          //Serial.print(gps.latitude);
+////        }
+//      }
+//    }
+
 }
 void setup() {
   //GarrettSetup();
