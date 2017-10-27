@@ -66,7 +66,8 @@ void setup()
   // loop code a heck of a lot easier!
 
 #ifdef __arm__
-  usingInterrupt = false;  //NOTE - we don't want to use interrupts on the Due
+  //usingInterrupt = false;  //NOTE - we don't want to use interrupts on the Due
+  useInterrupt(true);
 #else
   useInterrupt(true);
 #endif
@@ -109,6 +110,7 @@ void loop()                     // run over and over again
 {
   // in case you are not using the interrupt above, you'll
   // need to 'hand query' the GPS, not suggested :(
+  
   if (! usingInterrupt) {
     // read data from the GPS in the 'main loop'
     char c = GPS.read();

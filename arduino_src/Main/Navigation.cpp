@@ -6,46 +6,30 @@
 
  //Include files
  #include "Navigation.h"
- #include <Adafruit_GPS.h>
-
- //Definitions
- #define GPSSerial Serial1
+ #include "Gps.h"
 
  //Global parameters
- Adafruit_GPS Gps(&GPSSerial);
- uint32_t timer = millis();
+ //Adafruit_GPS Gps(&GPSSerial);
+ //uint32_t timer = millis();
+ Gps gps;
  
  void Navigation::NavInitialize()
  {
-  //Initialize the GPS unit to a 9600 baud rate
-  Gps.begin(9600);
-  
-  //Turn on RMC (recommended minimum) and GGA (fix data) including altitude
-  Gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-
-  //Set the update rate
-  Gps.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
-
-  // Request updates on antenna status, comment out to keep quiet
-  Gps.sendCommand(PGCMD_ANTENNA);
-
-  delay(1000);
-  
-  //Get the gps firmware version
-  GPSSerial.println(PMTK_Q_RELEASE);
+    gps.Initialize();
  }
  
  void Navigation::GetCurrentLocation()
  {
-    while(true)
-    {
+  /*
+    //while(true)
+    //{
     char c = Gps.read();
     if (Gps.newNMEAreceived()) 
     {
-      Serial.println(Gps.lastNMEA());
+      //Serial.println(Gps.lastNMEA());
       if(!Gps.parse(Gps.lastNMEA()))
       {
-        //Serial.print("Unable to parse NMEA packet");
+        Serial.print("Unable to parse NMEA packet");
         return;
       }
     }
@@ -67,7 +51,17 @@
         Serial.print("No fix acheived\n");
       }
     }
+        
+    if(Gps.fix)
+    { 
+      Serial.print(Gps.latitude, 4);
+      Serial.print(Gps.longitude, 4);
     }
-    
+    else
+    {
+      Serial.print("No fix acheived\n");
+    }
+    //}
+    */
  }
 

@@ -113,26 +113,36 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
+  Serial.println("I am in the normal loop");
+  delay(10000);
+  /*
   int incomingByte = 0;
+  Serial.print("Please enter a command\n");
   while(true)
   {
     //Read the serial command
-    incomingByte = Serial.read();  
-    if(incomingByte == 0x52)
+    delay(10);
+    if(Serial.available() > 0)
     {
-      Serial.print("Received code for coordinate read");
+      incomingByte = Serial.read();  
+      
+      //114 is the ascii code for 'r'
+      if(incomingByte == 114)
+      {
+        Serial.print("Read character detected\n");
+        Nav.GetCurrentLocation();
+      }
     }
-    //Nav.GetCurrentLocation();
-    //delay(10);
   }
+  */
 }
 void setup() {
-  GarrettSetup();
-  //BrandonSetup();
+  //GarrettSetup();
+  BrandonSetup();
 }
 
 void loop() {
-  GarrettLoop(); 
-  //BrandonLoop(); 
+  //GarrettLoop(); 
+  BrandonLoop(); 
 }
 
