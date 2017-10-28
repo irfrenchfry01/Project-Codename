@@ -86,6 +86,7 @@ class Gps
    void ReadISR();
     
   private:
+    String inputString;
     void InitializeStruct();
     void SendCommand(String cmd);
 };

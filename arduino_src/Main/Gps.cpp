@@ -7,10 +7,10 @@
 #include "Gps.h"
 
   //Used for storing incoming data from GPS
-  String inputString = "";
+  //String inputString = "";
 
   //Enables verbose output from the parseNMEA function
-  bool verboseOutput = true;
+  bool verboseOutput = false;
 
 void Gps::Initialize()
 {

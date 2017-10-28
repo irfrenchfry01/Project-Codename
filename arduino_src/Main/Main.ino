@@ -16,8 +16,7 @@ motor motor;
 Navigation Nav;
 FlightCtrl Fc;
 kalman k;
-//This is temporary. This will be put into navigation class
-//Gps gps;
+String inputString;
 
 void LedInit(void)
 {
@@ -115,28 +114,67 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
-  Nav.GetCurrentLocation();
-  delay(1000);
-//  char incomingChar;
-//    if(Serial.available() > 0)
-//    {
-//      incomingChar = Serial.read();  
-//      
-//      //114 is the ascii code for 'r'
-//      if(incomingChar == 114)
-//      {
-//        Serial.print("Read character detected\n");
-////        if(gps.dataLocked)
-////        {
-////          Serial.print("Data Locked");
-////        }
-////        else
-////        {
-////          //Serial.print(gps.latitude);
-////        }
-//      }
-//    }
 
+}
+
+void parseCommand(String inputCommand)
+{
+  //$ and first 8 characters are the command type
+  String commandType;
+  //Can hold up to 10 parameters
+  String parameters[10];
+
+  uint parameterIndex = 0;
+  uint curIndex = 0;
+  uint startIndex = 0;
+  bool firstCommaDetected = false;
+
+  //Performs the parsing of the different data values
+  for(curIndex = 1; curIndex < inputCommand.length(); curIndex++)
+  {
+    char curChar = inputCommand.charAt(curIndex);
+    
+    if(curChar == ',')
+    {
+      if(firstCommaDetected == false)
+      {
+        firstCommaDetected = true;
+        commandType = inputCommand.substring(1, curIndex);
+      }
+      else
+      {
+        parameters[parameterIndex] = inputCommand.substring(startIndex, curIndex);
+        parameterIndex++;
+      }
+      startIndex = curIndex + 1;
+    }
+  }
+
+  if(commandType.equals("ADDCOORD"))
+  {
+    Serial.println("Adding Coordinate");
+    Nav.AddCoordinate(parameters[0].toFloat(), parameters[1].toFloat());
+  }
+  else if(commandType.equals("BEGNPLAN"))
+  {
+    
+  }
+  
+}
+
+void serialEvent()
+{
+  while(Serial.available())
+  {
+    char inChar = (char)Serial.read();
+    inputString += inChar;
+
+    if(inChar == '\n')
+    {
+      parseCommand(inputString);
+      inputString = "";
+    }
+  }
 }
 void setup() {
   //GarrettSetup();
