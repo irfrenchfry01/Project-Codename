@@ -59,43 +59,34 @@
 
   //Acknowldgement
   #define PMTK_ACK "$PMTK001,"
-
-  //extern float timeData;
-  //extern float latitude;
-  //extern String latitudeQuad;
-//  extern float longitude;
-//  extern String longitudeQuad;
-//  extern int fixQuality;
-//  extern int numSats;
-//  extern float horDilution;
-//  extern float altInMeters;
-
+    
 class Gps
 {
   public:
-    //Parameters
-//    float timeData = 0.0;
-//    float latitude = 0.0;
-//    String latitudeQuad = "N";
-//    float longitude = 0.0;
-//    String longitudeQuad = "W";
-//    int fixQuality = 0;
-//    int numSats = 0;
-//    float horDilution = 0.0;
-//    float altInMeters = 0.0;
-//    
-//    //This acts as a semaphore for the data, so that data isn't modified during the interrupt if the main thread is using it.
-//    bool dataLocked = false;
-//    //This gets set true when new data is stored, and then set false when the data is used by the main thread.
-//    bool dataValid = false;
+   //Parameters   
+   float timeData;
+   float latitude;
+   String latitudeQuad;
+   float longitude;
+   String longitudeQuad;
+   int fixQuality;
+   int numSats;
+   float horDilution;
+   float altInMeters;
+   //This acts as a semaphore for the data, so that data isn't modified during the interrupt if the main thread is using it.
+   bool dataLocked;
+   //This gets set true when new data is stored, and then set false when the data is used by the main thread.
+   bool dataValid;
+   
+   //Public Functions
+   void Initialize();
+   bool IsDataLocked();
+   bool IsDataValid();
+   void ParseNMEAPacket(String nmeaPacket, bool verboseOutput);
+   void ReadISR();
     
-    //Gps();
-    void Initialize();
-    void Default();
-    void ReadCurrentLocation();
-
   private:
-    void parseNMEAPacket(String nmeaPacket);
+    void InitializeStruct();
     void SendCommand(String cmd);
 };
 

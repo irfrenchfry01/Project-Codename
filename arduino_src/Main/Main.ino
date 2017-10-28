@@ -115,6 +115,8 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
+  Nav.GetCurrentLocation();
+  delay(1000);
 //  char incomingChar;
 //    if(Serial.available() > 0)
 //    {

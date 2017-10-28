@@ -6,24 +6,16 @@
 
 #include "Gps.h"
 
-String inputString = "";
-float timeData = 0.0;
-float latitude = 0.0;
-String latitudeQuad = "N";
-float longitude = 0.0;
-String longitudeQuad = "W";
-int fixQuality = 0;
-int numSats = 0;
-float horDilution = 0.0;
-float altInMeters = 0.0;
-    
-//This acts as a semaphore for the data, so that data isn't modified during the interrupt if the main thread is using it.
-bool dataLocked = false;
-//This gets set true when new data is stored, and then set false when the data is used by the main thread.
-bool dataValid = false;
-  
+  //Used for storing incoming data from GPS
+  String inputString = "";
+
+  //Enables verbose output from the parseNMEA function
+  bool verboseOutput = true;
+
 void Gps::Initialize()
 {
+  InitializeStruct();
+  
   //Initialize the GPS unit to a 9600 baud rate
   GPSSerial.begin(9600);
   
@@ -42,12 +34,27 @@ void Gps::Initialize()
   Serial.println("GPS Initialize Complete");
 }
 
+void Gps::InitializeStruct()
+{
+  timeData = 0.0;
+  latitude = 0.0;
+  latitudeQuad = "N";
+  longitude = 0.0;
+  longitudeQuad = "W";
+  fixQuality = 0;
+  numSats = 0;
+  horDilution = 0.0;
+  altInMeters = 0.0;
+  dataLocked = false;
+  dataValid = false;
+}
+
 //This function parses the NMEA packet and stores the values in the public variables to be used by the main program
-void parseNMEAPacket(String nmeaPacket, bool verboseOutput)
+void Gps::ParseNMEAPacket(String nmeaPacket, bool verboseOutput)
 {
   //Algorithm variables
-  int startIndex = 0;
-  int curIndex = 1;
+  uint startIndex = 0;
+  uint curIndex = 1;
   int checkSum = 0;
   int loopStep = 0;
   bool firstCommaDetected = false;
@@ -63,6 +70,8 @@ void parseNMEAPacket(String nmeaPacket, bool verboseOutput)
   float _horDilution = 0.0;
   float _altInMeters = 0.0;
   int _checkSum = 0;
+
+  if(verboseOutput) Serial.println(nmeaPacket);
   
   for(curIndex = 1; curIndex < nmeaPacket.length(); curIndex++)
   {
@@ -147,7 +156,7 @@ void parseNMEAPacket(String nmeaPacket, bool verboseOutput)
   }
   //Check sum
   if(verboseOutput) Serial.println("CheckSum: " + nmeaPacket.substring(startIndex));
-  _checkSum = nmeaPacket.substring(startIndex).toInt();
+  _checkSum = std::strtol(&nmeaPacket.substring(startIndex)[0], nullptr, 16);
   
   if(verboseOutput) Serial.print("Calculated Checksum = ");
   if(verboseOutput) Serial.println(checkSum, HEX);
@@ -167,7 +176,7 @@ void parseNMEAPacket(String nmeaPacket, bool verboseOutput)
   }
 }
 
-void serialEvent1()
+void Gps::ReadISR()
 {
   while(GPSSerial.available())
   {
@@ -181,8 +190,7 @@ void serialEvent1()
         if(!dataLocked)
         {
           dataLocked = true;
-          Serial.println(inputString);
-          parseNMEAPacket(inputString, true);
+          Gps::ParseNMEAPacket(inputString, verboseOutput);
           dataLocked = false;
         }
       }

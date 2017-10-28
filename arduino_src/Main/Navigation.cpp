@@ -20,48 +20,20 @@
  
  void Navigation::GetCurrentLocation()
  {
-  /*
-    //while(true)
-    //{
-    char c = Gps.read();
-    if (Gps.newNMEAreceived()) 
-    {
-      //Serial.println(Gps.lastNMEA());
-      if(!Gps.parse(Gps.lastNMEA()))
-      {
-        Serial.print("Unable to parse NMEA packet");
-        return;
-      }
-    }
-
-    if (timer > millis()) timer = millis();
-     
-    // approximately every 2 seconds or so, print out the current stats
-    if (millis() - timer > 2000) {
-    
-      Serial.println(Gps.hour, DEC);
-      Serial.print("Fix: "); Serial.print((int)Gps.fix);
-      if(Gps.fix)
-      { 
-        Serial.print(Gps.latitude, 4);
-        Serial.print(Gps.longitude, 4);
-      }
-      else
-      {
-        Serial.print("No fix acheived\n");
-      }
-    }
-        
-    if(Gps.fix)
-    { 
-      Serial.print(Gps.latitude, 4);
-      Serial.print(Gps.longitude, 4);
-    }
-    else
-    {
-      Serial.print("No fix acheived\n");
-    }
-    //}
-    */
+  if(!gps.dataLocked)
+  {
+    gps.dataLocked = true;
+    Serial.println("Data Locked");
+    Serial.println(gps.latitude);
+    Serial.println(gps.longitude);
+    gps.dataLocked = false;
+    Serial.println("Data Unlocked");
+    Serial.println("\n");
+  }
+ }
+  
+ void serialEvent1()
+ {
+    gps.ReadISR();
  }
 
