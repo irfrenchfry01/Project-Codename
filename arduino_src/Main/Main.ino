@@ -151,12 +151,12 @@ void parseCommand(String inputCommand)
     }
   }
 
+  //Add Coordinate requires that the coordinates being passed in are in Degrees Decimal format
   if(commandType.equals("ADDCOORD"))
   {
     Serial.println("Adding Coordinate");
     Serial.println(parameters[0]);
-    Nav.DDMToDDConversion(parameters[0].toFloat());
-    //Nav.AddCoordinate(parameters[0].toFloat(), parameters[1].toFloat());
+    Nav.AddCoordinate(parameters[0], parameters[1]);
   }
   else if(commandType.equals("BEGNPLAN"))
   {
@@ -179,6 +179,7 @@ void serialEvent()
     }
   }
 }
+
 void setup() {
   //GarrettSetup();
   BrandonSetup();

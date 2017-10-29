@@ -10,7 +10,7 @@
 
  Gps gps;
 
- float flightPath[MAXCOORDINATES][2];
+ DD_COORDINATE flightPath[MAXCOORDINATES];
  int writeCount = 0;
  
  void Navigation::NavInitialize()
@@ -18,13 +18,40 @@
     gps.Initialize();
  }
 
- bool Navigation::AddCoordinate(float latitude, float longitude)
+ bool Navigation::AddCoordinate(String latitude, String longitude)
  {
+    DD_COORDINATE coordinate;
     if(writeCount < MAXCOORDINATES)
     {
-      flightPath[writeCount][0] = latitude;
-      flightPath[writeCount][1] = longitude;
+      //Parse the latitude value into the coordinate struct
+      for(int i = 0; i < latitude.length(); i++)
+      {
+        if(latitude.charAt(i) == '.')
+        {
+          coordinate.latDegrees = latitude.substring(0, i).toInt();
+          coordinate.latDecimal = latitude.substring(i, latitude.length()).toFloat();
+        }
+      }
+      
+      //Parse the longitude value into the coordinate struct
+      for(int i = 0; i < longitude.length(); i++)
+      {
+        if(longitude.charAt(i) == '.')
+        {
+          coordinate.longDegrees = longitude.substring(0, i).toInt();
+          coordinate.longDecimal = longitude.substring(i, longitude.length()).toFloat();
+        }
+      }
+
+      //Add the coordinate to the flight plan
+      flightPath[writeCount] = coordinate;
       writeCount++;
+
+      Serial.println(flightPath[0].latDegrees);
+      Serial.println(flightPath[0].latDecimal, 6);
+      Serial.println(flightPath[0].longDegrees);
+      Serial.println(flightPath[0].longDecimal, 6);
+      
       return true;
     }
     else 
@@ -32,6 +59,7 @@
       Serial.println("Maximum coordinates reached");
       return false;
     }
+    return false;
  }
  
  void Navigation::GetCurrentLocation()
