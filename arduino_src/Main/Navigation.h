@@ -14,6 +14,7 @@ class Navigation{
     void NavInitialize();
     void GetCurrentLocation();
     bool AddCoordinate(float latitude, float longitude);
+    float DDMToDDConversion(float ddmValue);
   private:
   
 };

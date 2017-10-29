@@ -117,6 +117,7 @@ void BrandonLoop()
 
 }
 
+//Protocol $<COMMAND_TYPE(8Characters),[Parameter1],[Parameter2],....,[ParameterN],
 void parseCommand(String inputCommand)
 {
   //$ and first 8 characters are the command type
@@ -153,7 +154,9 @@ void parseCommand(String inputCommand)
   if(commandType.equals("ADDCOORD"))
   {
     Serial.println("Adding Coordinate");
-    Nav.AddCoordinate(parameters[0].toFloat(), parameters[1].toFloat());
+    Serial.println(parameters[0]);
+    Nav.DDMToDDConversion(parameters[0].toFloat());
+    //Nav.AddCoordinate(parameters[0].toFloat(), parameters[1].toFloat());
   }
   else if(commandType.equals("BEGNPLAN"))
   {

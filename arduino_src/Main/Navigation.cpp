@@ -46,6 +46,14 @@
     Serial.println("\n");
   }
  }
+
+ float Navigation::DDMToDDConversion(float ddmValue)
+ {
+  //Serial.println(ddmValue, 5);
+  //Get the Degrees portion of the value
+  long ddDegrees = (long)(ddmValue*10000.0);
+  Serial.print("Degrees = ");Serial.println(ddDegrees);
+ }
   
  void serialEvent1()
  {
