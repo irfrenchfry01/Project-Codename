@@ -9,7 +9,7 @@
 
 #define TEENSY_LED  (1u<<5u)  
  
-static uint8_t count = 0;
+//static uint8_t count = 0;
 
 Imu Imu;
 motor motor;
@@ -55,38 +55,49 @@ void ToggleLed(void)
 
 void GarrettSetup()
 {
-  //Serial.begin(38400);
+  Serial.begin(38400);
 
   LedInit();
   motor.InitMotorPins();
 
-  Imu.InitImu();
+  //Imu.InitImu();
   
   delay(1000);
-  Imu.displaySensorDetails();
+  //Imu.displaySensorDetails();
 }
 
+ uint8_t temp = 35;
+
 void GarrettLoop() {
-  double Ax, Ay, Az = 0;    //in m/s^2
-  double RollDeg, PitchDeg = 0;   //in degrees
-  double GxRaw = 0;         //in rad/s
-  double GxDegPerSec = 0;            //in deg/s
-  float kRoll = 0;
+  //double Ax, Ay, Az = 0;    //in m/s^2
+  //double RollDeg, PitchDeg = 0;   //in degrees
+  //double GxRaw = 0;         //in rad/s
+  //double GxDegPerSec = 0;            //in deg/s
+  //float kRoll = 0;
   
   delay(1000);
   ToggleLed();
+
+  motor.SetMotorSpeed(MOTOR_FL, temp);
+  motor.SetMotorSpeed(MOTOR_FR, temp);
+  motor.SetMotorSpeed(MOTOR_BL, temp);
+  motor.SetMotorSpeed(MOTOR_BR, temp);
+ 
   //Imu.ReadAndPrintImuData();
+  /*  //commented out for motor test
   Ax = Imu.GetAx();
   Ay = Imu.GetAy();
   Az = Imu.GetAz();
-  //Serial.print("Ay: "); Serial.print(Ay); Serial.println(" ");
-  //Serial.print("Az: "); Serial.print(Az); Serial.println(" ");
+ */
+  /*Serial.print("Ay: "); Serial.print(Ay); Serial.println(" "); */
+  /*Serial.print("Az: "); Serial.print(Az); Serial.println(" "); */
 
+  /*  //commented out for motor test
   RollDeg = Fc.CalcRoll(Ax, Ay, Az);
   PitchDeg = Fc.CalcPitch(Ax, Ay, Az);
 
   Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
-  //Serial.print("   Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
+  Serial.print("   Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
 
   GxRaw = Imu.GetGx();
   GxDegPerSec = Fc.GetGx(GxRaw);
@@ -96,13 +107,11 @@ void GarrettLoop() {
   //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
   kRoll = k.GetAngle(RollDeg, GxDegPerSec, 1);
   Serial.print(" kRoll: "); Serial.print(kRoll); Serial.println(" ");
+  */
 
-  motor.SetMotorSpeed(FL, 50);
-  motor.SetMotorSpeed(FR, 50);
-  motor.SetMotorSpeed(BL, 50);
-  motor.SetMotorSpeed(BR, 50);  
-  
+  /*  //commented out for motor test
   count++;
+  */
 }
 
 void BrandonSetup()
