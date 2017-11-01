@@ -16,6 +16,7 @@ motor motor;
 Navigation Nav;
 FlightCtrl Fc;
 kalman k;
+String inputString;
 
 void LedInit(void)
 {
@@ -122,19 +123,79 @@ void BrandonSetup()
 
 void BrandonLoop()
 {
-  //while(true)
-  //{
-    Nav.GetCurrentLocation();
-    //delay(10);
-  //}
+
 }
+
+//Protocol $<COMMAND_TYPE(8Characters),[Parameter1],[Parameter2],....,[ParameterN],
+void parseCommand(String inputCommand)
+{
+  //$ and first 8 characters are the command type
+  String commandType;
+  //Can hold up to 10 parameters
+  String parameters[10];
+
+  uint parameterIndex = 0;
+  uint curIndex = 0;
+  uint startIndex = 0;
+  bool firstCommaDetected = false;
+
+  //Performs the parsing of the different data values
+  for(curIndex = 1; curIndex < inputCommand.length(); curIndex++)
+  {
+    char curChar = inputCommand.charAt(curIndex);
+    
+    if(curChar == ',')
+    {
+      if(firstCommaDetected == false)
+      {
+        firstCommaDetected = true;
+        commandType = inputCommand.substring(1, curIndex);
+      }
+      else
+      {
+        parameters[parameterIndex] = inputCommand.substring(startIndex, curIndex);
+        parameterIndex++;
+      }
+      startIndex = curIndex + 1;
+    }
+  }
+
+  //Add Coordinate requires that the coordinates being passed in are in Degrees Decimal format
+  if(commandType.equals("ADDCOORD"))
+  {
+    Serial.println("Adding Coordinate");
+    Serial.println(parameters[0]);
+    Nav.AddCoordinate(parameters[0], parameters[1]);
+  }
+  else if(commandType.equals("BEGNPLAN"))
+  {
+    
+  }
+  
+}
+
+void serialEvent()
+{
+  while(Serial.available())
+  {
+    char inChar = (char)Serial.read();
+    inputString += inChar;
+
+    if(inChar == '\n')
+    {
+      parseCommand(inputString);
+      inputString = "";
+    }
+  }
+}
+
 void setup() {
-  GarrettSetup();
-  //BrandonSetup();
+  //GarrettSetup();
+  BrandonSetup();
 }
 
 void loop() {
-  GarrettLoop(); 
-  //BrandonLoop(); 
+  //GarrettLoop(); 
+  BrandonLoop(); 
 }
 

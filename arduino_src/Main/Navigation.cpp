@@ -6,68 +6,85 @@
 
  //Include files
  #include "Navigation.h"
- #include <Adafruit_GPS.h>
+ #include "Gps.h"
 
- //Definitions
- #define GPSSerial Serial1
+ Gps gps;
 
- //Global parameters
- Adafruit_GPS Gps(&GPSSerial);
- uint32_t timer = millis();
+ DD_COORDINATE flightPath[MAXCOORDINATES];
+ int writeCount = 0;
  
  void Navigation::NavInitialize()
  {
-  //Initialize the GPS unit to a 9600 baud rate
-  Gps.begin(9600);
-  
-  //Turn on RMC (recommended minimum) and GGA (fix data) including altitude
-  Gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+    gps.Initialize();
+ }
 
-  //Set the update rate
-  Gps.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); // 1 Hz update rate
+ bool Navigation::AddCoordinate(String latitude, String longitude)
+ {
+    DD_COORDINATE coordinate;
+    if(writeCount < MAXCOORDINATES)
+    {
+      //Parse the latitude value into the coordinate struct
+      for(int i = 0; i < latitude.length(); i++)
+      {
+        if(latitude.charAt(i) == '.')
+        {
+          coordinate.latDegrees = latitude.substring(0, i).toInt();
+          coordinate.latDecimal = latitude.substring(i, latitude.length()).toFloat();
+        }
+      }
+      
+      //Parse the longitude value into the coordinate struct
+      for(int i = 0; i < longitude.length(); i++)
+      {
+        if(longitude.charAt(i) == '.')
+        {
+          coordinate.longDegrees = longitude.substring(0, i).toInt();
+          coordinate.longDecimal = longitude.substring(i, longitude.length()).toFloat();
+        }
+      }
 
-  // Request updates on antenna status, comment out to keep quiet
-  Gps.sendCommand(PGCMD_ANTENNA);
+      //Add the coordinate to the flight plan
+      flightPath[writeCount] = coordinate;
+      writeCount++;
 
-  delay(1000);
-  
-  //Get the gps firmware version
-  GPSSerial.println(PMTK_Q_RELEASE);
+      Serial.println(flightPath[0].latDegrees);
+      Serial.println(flightPath[0].latDecimal, 6);
+      Serial.println(flightPath[0].longDegrees);
+      Serial.println(flightPath[0].longDecimal, 6);
+      
+      return true;
+    }
+    else 
+    {
+      Serial.println("Maximum coordinates reached");
+      return false;
+    }
+    return false;
  }
  
  void Navigation::GetCurrentLocation()
  {
-    while(true)
-    {
-    char c = Gps.read();
-    if (Gps.newNMEAreceived()) 
-    {
-      Serial.println(Gps.lastNMEA());
-      if(!Gps.parse(Gps.lastNMEA()))
-      {
-        //Serial.print("Unable to parse NMEA packet");
-        return;
-      }
-    }
+  if(!gps.dataLocked)
+  {
+    gps.dataLocked = true;
+    Serial.println(gps.latitude);
+    Serial.println(gps.longitude);
+    gps.dataLocked = false;
+    Serial.println("Data Unlocked");
+    Serial.println("\n");
+  }
+ }
 
-    if (timer > millis()) timer = millis();
-     
-    // approximately every 2 seconds or so, print out the current stats
-    if (millis() - timer > 2000) {
-    
-      Serial.println(Gps.hour, DEC);
-      Serial.print("Fix: "); Serial.print((int)Gps.fix);
-      if(Gps.fix)
-      { 
-        Serial.print(Gps.latitude, 4);
-        Serial.print(Gps.longitude, 4);
-      }
-      else
-      {
-        Serial.print("No fix acheived\n");
-      }
-    }
-    }
-    
+ float Navigation::DDMToDDConversion(float ddmValue)
+ {
+  //Serial.println(ddmValue, 5);
+  //Get the Degrees portion of the value
+  long ddDegrees = (long)(ddmValue*10000.0);
+  Serial.print("Degrees = ");Serial.println(ddDegrees);
+ }
+  
+ void serialEvent1()
+ {
+    gps.ReadISR();
  }
 
