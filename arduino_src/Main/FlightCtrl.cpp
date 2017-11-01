@@ -4,10 +4,14 @@
  * Description: flight controller
  */
 
- #include "FlightCtrl.h"
+#include "FlightCtrl.h"
 #include <math.h>
 #include <Wire.h>
+//#include "motor.h"
 
+/* compile issue
+motor motor;
+*/
 
 //double pitch, roll;
 //double ax, ay, az;  //accelerometer input
@@ -60,24 +64,33 @@ double FlightCtrl::GetGx(double GxRaw)
  * 
  * @param[in] Pitch       angle between FL/FR and horizontal (degrees)
  */
-void PitchCtrl(double Pitch)
+void FlightCtrl::PitchCtrl(double Pitch)
 {
+  /*  compile issue
   // if drone is tilted backwards
   if(Pitch > (ZERO + PITCH_TOLERANCE))
   {
     //decrease FL/FR motor speeds
+    motor.SetMotorSpeed(MOTOR_FL, 80);
+    motor.SetMotorSpeed(MOTOR_FR, 80);
     //increase BL/BR motor speeds
+    motor.SetMotorSpeed(MOTOR_BL, 80);
+    motor.SetMotorSpeed(MOTOR_BR, 80);
   }
   else if(Pitch < (ZERO - PITCH_TOLERANCE))
   {
     //increase FL/FR motor speeds
+    motor.SetMotorSpeed(MOTOR_FL, 80);
+    motor.SetMotorSpeed(MOTOR_FR, 80);
     //decrease BL/BR motor speeds
+    motor.SetMotorSpeed(MOTOR_BL, 80);
+    motor.SetMotorSpeed(MOTOR_BR, 80);
   }
   else
   {
-    //don't. change. anything. 
+    //is it flying? don't. change. anything. 
   }
-
+  */
 
 }
 
@@ -91,8 +104,9 @@ void PitchCtrl(double Pitch)
  * 
  * @retval      AngVel  angular velocity in deg/sec
  */
-double CalcAngularVelFromPitch(double Pitch, double DeltaTime)
+double FlightCtrl::CalcAngularVelFromPitch(double Pitch, double DeltaTime)
 {
+  /*  compile issue
   static double PrevPitch = 0;
   static bool InitVal = true;
   double AngVel = 0;
@@ -112,12 +126,15 @@ double CalcAngularVelFromPitch(double Pitch, double DeltaTime)
   }
 
   return AngVel;
+  */
+  return 0;
 }
 
 
 //*******************************************
 // below, deprecated code - depends on needs
 //*******************************************
+/* compile issue
 double FlightCtrl::GetRoll(void)
 {
   return this->roll;
@@ -127,4 +144,5 @@ double FlightCtrl::GetPitch(void)
 {
   return this->pitch;
 }
+*/
 

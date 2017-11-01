@@ -4,8 +4,8 @@
  * Description: flight controller
  */
 
- #ifndef FLIGHTCTRL_H
- #define FLIGHTCTRL_H
+#ifndef FLIGHTCTRL_H
+#define FLIGHTCTRL_H
 
 #define PITCH_TOLERANCE   0.01    //in degrees
 #define ZERO              0.0
@@ -35,4 +35,4 @@ class FlightCtrl
 
 
 
- #endif
+#endif
