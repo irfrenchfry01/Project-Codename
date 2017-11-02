@@ -79,7 +79,7 @@ class Gps
    bool dataValid;
    
    //Public Functions
-   void Initialize();
+   void GpsInit();
    bool IsDataLocked();
    bool IsDataValid();
    void ParseNMEAPacket(String nmeaPacket, bool verboseOutput);

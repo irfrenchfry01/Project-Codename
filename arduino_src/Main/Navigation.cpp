@@ -15,7 +15,7 @@
  
  void Navigation::NavInitialize()
  {
-    gps.Initialize();
+    gps.GpsInit();
  }
 
  bool Navigation::AddCoordinate(String latitude, String longitude)
