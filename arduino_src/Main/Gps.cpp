@@ -156,7 +156,8 @@ void Gps::ParseNMEAPacket(String nmeaPacket, bool verboseOutput)
   }
   //Check sum
   if(verboseOutput) Serial.println("CheckSum: " + nmeaPacket.substring(startIndex));
-  _checkSum = std::strtol(&nmeaPacket.substring(startIndex)[0], nullptr, 16);
+  //_checkSum = std::strtol(&nmeaPacket.substring(startIndex)[0], nullptr, 16);
+  _checkSum = nmeaPacket.substring(startIndex).toInt();
   
   if(verboseOutput) Serial.print("Calculated Checksum = ");
   if(verboseOutput) Serial.println(checkSum, HEX);
