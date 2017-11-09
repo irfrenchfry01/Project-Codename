@@ -10,7 +10,7 @@
   //String inputString = "";
 
   //Enables verbose output from the parseNMEA function
-  bool verboseOutput = true;
+  bool verboseOutput = false;
 
 void Gps::GpsInit()
 {
@@ -53,8 +53,8 @@ void Gps::InitializeStruct()
 void Gps::ParseNMEAPacket(String nmeaPacket, bool verboseOutput)
 {
   //Algorithm variables
-  uint startIndex = 0;
-  uint curIndex = 1;
+  uint32_t startIndex = 0;
+  uint32_t curIndex = 1;
   int checkSum = 0;
   int loopStep = 0;
   bool firstCommaDetected = false;
