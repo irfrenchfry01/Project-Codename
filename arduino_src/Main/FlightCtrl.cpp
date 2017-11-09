@@ -7,11 +7,9 @@
 #include "FlightCtrl.h"
 #include <math.h>
 #include <Wire.h>
-//#include "motor.h"
+#include "motor.h"
 
-/* compile issue
-motor motor;
-*/
+motor mtr;
 
 //double pitch, roll;
 //double ax, ay, az;  //accelerometer input
@@ -66,7 +64,7 @@ double FlightCtrl::GetGx(double GxRaw)
  */
 void FlightCtrl::PitchCtrl(double Pitch)
 {
-  /*  compile issue
+  /*
   // if drone is tilted backwards
   if(Pitch > (ZERO + PITCH_TOLERANCE))
   {
@@ -90,8 +88,7 @@ void FlightCtrl::PitchCtrl(double Pitch)
   {
     //is it flying? don't. change. anything. 
   }
-  */
-
+*/
 }
 
 /**

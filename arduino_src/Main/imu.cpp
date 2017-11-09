@@ -58,7 +58,7 @@ void Imu::displaySensorDetails(void)
 
 void Imu::InitImu(void)
 {
-  Serial.begin(38400);
+  //Serial.begin(38400);
   Serial.println(F("Adafruit 9DOF Tester")); Serial.println("");
   
   /* Initialise the sensors */
@@ -89,6 +89,7 @@ void Imu::ReadAndPrintImuData(void)
    
   /* Display the results (acceleration is measured in m/s^2) */
   accel.getEvent(&event);
+  Serial.println("");
   Serial.print(F("ACCEL "));
   Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  ");
   Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  ");

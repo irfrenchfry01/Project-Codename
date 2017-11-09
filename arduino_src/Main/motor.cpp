@@ -42,6 +42,8 @@ void motor::InitMotorPins(void)
   SetMotorSpeed(MOTOR_FR, InitSpeed);
   SetMotorSpeed(MOTOR_BL, InitSpeed);
   SetMotorSpeed(MOTOR_BR, InitSpeed);
+
+  Serial.println("\nMotor initialization complete");
 }
 
 /*
@@ -106,7 +108,7 @@ MotorStatus_t motor::SetMotorSpeed(MotorId_t Motor, uint8_t SpeedPercent)
   if(SpeedPercent <= 100)
   {
     Speed = SpeedPercent * 1.8;
-    Serial.print("\nSpeed % = "); Serial.print(SpeedPercent); Serial.print(" Speed = "); Serial.print(Speed);
+    //Serial.print("\nSpeed % = "); Serial.print(SpeedPercent); Serial.print(" Speed = "); Serial.print(Speed);
      
     if(MOTOR_FL == Motor)
     {

@@ -55,13 +55,13 @@ void ToggleLed(void)
 }
 
 void GarrettSetup()
-{
+{ 
   Serial.begin(38400);
 
   LedInit();
   motor.InitMotorPins();
 
-  //Imu.InitImu();
+  Imu.InitImu();
   
   delay(1000);
   //Imu.displaySensorDetails();
@@ -190,12 +190,12 @@ void serialEvent()
 }
 
 void setup() {
-  //GarrettSetup();
-  BrandonSetup();
+  GarrettSetup();
+  //BrandonSetup();
 }
 
 void loop() {
-  //GarrettLoop(); 
-  BrandonLoop(); 
+  GarrettLoop(); 
+  //BrandonLoop(); 
 }
 
