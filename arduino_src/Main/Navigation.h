@@ -16,6 +16,13 @@
   float latDecimal;
   int longDegrees;
   float longDecimal;
+  float latDegreesRad;
+  float latDecimalRad;
+  float longDegreesRad;
+  float longDecimalRad;
+  float latDegreesSin;
+  float latDegreesCos;
+  float latDecimalSin;
  };
 
 class Navigation{

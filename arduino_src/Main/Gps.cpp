@@ -10,7 +10,7 @@
   //String inputString = "";
 
   //Enables verbose output from the parseNMEA function
-  bool verboseOutput = false;
+  bool verboseOutput = true;
 
 void Gps::GpsInit()
 {
