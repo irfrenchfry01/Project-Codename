@@ -190,12 +190,12 @@ void serialEvent()
 }
 
 void setup() {
-  GarrettSetup();
-  //BrandonSetup();
+  //GarrettSetup();
+  BrandonSetup();
 }
 
 void loop() {
-  GarrettLoop(); 
-  //BrandonLoop(); 
+  //GarrettLoop(); 
+  BrandonLoop(); 
 }
 
