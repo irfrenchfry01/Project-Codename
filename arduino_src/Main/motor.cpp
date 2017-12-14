@@ -12,8 +12,6 @@ Servo MotorFR;   // MOTOR_FR, pin 3
 Servo MotorBL;   // MOTOR_BL, pin 4
 Servo MotorBR;   // MOTOR_BR, pin 5
 
-uint8_t FLMotorSpeed[ MOTOR_SPEED_AVG_CNT ] = { 0 };
-
 /*
  *  @brief setup PWM pins for output
  */
@@ -44,52 +42,6 @@ void motor::InitMotorPins(void)
   SetMotorSpeed(MOTOR_BR, InitSpeed);
 
   Serial.println("\nMotor initialization complete");
-}
-
-/*
- *  @brief calc motor speed based on averaging scheme
- *  
- *  @param[in] Motor      select which motor to calc for
- *  @param[in] NewSpeed   new speed input to be averaged, in percent
- *  
- *  @retval   Speed       current speed to change motor to, in percent
- */
-uint8_t motor::CalcMotorSpeed(MotorId_t Motor, uint8_t NewSpeed)
-{
-  /* //compile error issue
-  uint8_t i = 0;
-  double Sum = 0;
-  double AvgSpeed = 0;
-  
-  if(MOTOR_FL == Motor)
-  {
-    for(i = 1; i < MOTOR_SPEED_AVG_CNT; i++)
-    {
-      //Sum += (FLMotorSpeed[i] * MOTOR_SPEED_COEF[i-1]);
-      Sum += (FLMotorSpeed[i] * MOTOR_SPEED_COEF);
-      FLMotorSpeed[i-1] = FLMotorSpeed[i];
-    }
-    FLMotorSpeed[MOTOR_SPEED_AVG_CNT] = NewSpeed;
-    Sum += FLMotorSpeed[MOTOR_SPEED_AVG_CNT];
-    AvgSpeed = Sum / MOTOR_SPEED_AVG_CNT;
-  }
-  */
-  
-  /* //commented out for motor test
-  else if(MOTOR_FR == Motor)
-  {
-    
-  }
-  else if(MOTOR_BL == Motor)
-  {
-    
-  }
-  else
-  {
-    
-  }
-  */
-  return 0;
 }
 
 /*
@@ -151,6 +103,8 @@ void motor::EmergencyMotorOff(void)
   SetMotorSpeed(MOTOR_FR, MOTOR_OFF);
   SetMotorSpeed(MOTOR_BL, MOTOR_OFF);
   SetMotorSpeed(MOTOR_BR, MOTOR_OFF);
+
+  Serial.println("\nERROR: Emergency motor off and halting program");
   
   while(true);
 }

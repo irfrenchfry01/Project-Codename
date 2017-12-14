@@ -30,12 +30,17 @@
  */
 
 
-#ifdef main_h
-#define main_h
+#ifndef MAIN_H
+#define MAIN_H
 
+#define TEENSY_LED  (1u<<5u)
 
-
-
+void LedInit(void)
+{
+  PORTC_PCR5 = PORT_PCR_MUX(0x1); //digital GPIO mode?
+  GPIOC_PDDR = TEENSY_LED;
+  GPIOC_PSOR = TEENSY_LED;
+}
 
 
 

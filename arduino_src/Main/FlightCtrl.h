@@ -11,21 +11,22 @@
 #define ZERO              0.0
 
 #include <stdint.h>
-
+#include "motor.h"
 
 class FlightCtrl
 {
   public:
-    double CalcRoll(double ax, double ay, double az);
-    double CalcPitch(double ax, double ay, double az);
+    double CalcRoll(void);
+    double CalcPitch(void);
     double GetRoll(void);
     double GetPitch(void);
 
-    double GetGx(double GxRaw);
+    double GetGx(void);
+    double GetGy(void);
     
-    void PitchCtrl(double Pitch);
-
     double CalcAngularVelFromPitch(double Pitch, double DeltaTime);
+
+    void CalcMSpeed(MotorId_t Motor, int32_t kRoll, int32_t kPitch);
 
   private:
     double pitch = 0.00;  //rotation around y axis

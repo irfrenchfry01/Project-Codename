@@ -7,9 +7,10 @@
 #include "FlightCtrl.h"
 #include <math.h>
 #include <Wire.h>
-#include "motor.h"
+#include "imu.h"
 
 motor mtr;
+Imu Imu;
 
 //double pitch, roll;
 //double ax, ay, az;  //accelerometer input
@@ -23,8 +24,12 @@ motor mtr;
 * 
 * retval    roll  angle of roll in degrees
 */
-double FlightCtrl::CalcRoll(double ax, double ay, double az)
+double FlightCtrl::CalcRoll(void)
 {
+  double ax = Imu.GetAx();
+  double ay = Imu.GetAy();
+  double az = Imu.GetAz();
+  
   this->roll  = (atan2(ay, az)*180.0)/M_PI;
   return this->roll;
 }
@@ -38,8 +43,12 @@ double FlightCtrl::CalcRoll(double ax, double ay, double az)
 * 
 * retval    pitch angle of pitch in degrees
 */
-double FlightCtrl::CalcPitch(double ax, double ay, double az)
+double FlightCtrl::CalcPitch(void)
 {
+  double ax = Imu.GetAx();
+  double ay = Imu.GetAy();
+  double az = Imu.GetAz();
+  
   this->pitch = (atan2(ax, sqrt(ay*ay + az*az))*180.0)/M_PI;
   return pitch;
 }
@@ -51,44 +60,33 @@ double FlightCtrl::CalcPitch(double ax, double ay, double az)
 * 
 * retval    GxDeg  gyro x-axis data in deg/s
 */
-double FlightCtrl::GetGx(double GxRaw)
+double FlightCtrl::GetGx(void)
 {
-  double GxDeg = ((GxRaw *180)/M_PI);
+  double GxDeg = 0;
+  double GxRaw = 0;
+   
+  GxRaw = Imu.GetGx();  //accelerometer data in x-axis in rad/s
+
+  GxDeg = ((GxRaw * 180)/M_PI);
+  
   return GxDeg;
 }
 
 /**
- * @brief adjusts drone pitch 
- * 
- * @param[in] Pitch       angle between FL/FR and horizontal (degrees)
- */
-void FlightCtrl::PitchCtrl(double Pitch)
-{
-  /*
-  // if drone is tilted backwards
-  if(Pitch > (ZERO + PITCH_TOLERANCE))
-  {
-    //decrease FL/FR motor speeds
-    motor.SetMotorSpeed(MOTOR_FL, 80);
-    motor.SetMotorSpeed(MOTOR_FR, 80);
-    //increase BL/BR motor speeds
-    motor.SetMotorSpeed(MOTOR_BL, 80);
-    motor.SetMotorSpeed(MOTOR_BR, 80);
-  }
-  else if(Pitch < (ZERO - PITCH_TOLERANCE))
-  {
-    //increase FL/FR motor speeds
-    motor.SetMotorSpeed(MOTOR_FL, 80);
-    motor.SetMotorSpeed(MOTOR_FR, 80);
-    //decrease BL/BR motor speeds
-    motor.SetMotorSpeed(MOTOR_BL, 80);
-    motor.SetMotorSpeed(MOTOR_BR, 80);
-  }
-  else
-  {
-    //is it flying? don't. change. anything. 
-  }
+* @brief convert gyro y-axis data to deg/s
+*
+* retval    GxDeg  gyro y-axis data in deg/s
 */
+double FlightCtrl::GetGy(void)
+{
+  double GyDeg = 0;
+  double GyRaw = 0;
+   
+  GyRaw = Imu.GetGy();  //accelerometer data in y-axis in rad/s
+
+  GyDeg = ((GyRaw * 180)/M_PI);
+  
+  return GyDeg;
 }
 
 /**
@@ -127,6 +125,53 @@ double FlightCtrl::CalcAngularVelFromPitch(double Pitch, double DeltaTime)
   return 0;
 }
 
+
+// things to experiment with
+// 1. base value
+// 2. coeff scale
+/**
+ * @brief calculate motor speeds based on roll, pitch (and yaw, eventually?)
+ * 
+ * @param[in] Motor   motor (front left, front right, etc.) to set speed of
+ * @param[in] kRoll   Kalman filtered roll in degrees
+ * @param[in] kPitch  Kalman filtered pitch in degrees
+ * 
+ */
+void FlightCtrl::CalcMSpeed(MotorId_t Motor, int32_t kRoll, int32_t kPitch)
+{
+  uint8_t CurMotorSpeed = 0;
+  uint8_t BaseSpeed = 0;
+  int8_t PitchCoef = 0;
+  int8_t RollCoef = 0;
+
+  BaseSpeed = MTR_BASE;
+
+  if(MOTOR_FL == Motor)
+  {
+    PitchCoef = MTR_FL_PITCH_COEF;
+    RollCoef = MTR_FL_ROLL_COEF;
+  }
+  else if(MOTOR_FR == Motor)
+  {
+    PitchCoef = MTR_FR_PITCH_COEF;
+    RollCoef = MTR_FR_ROLL_COEF;
+  }
+  else if(MOTOR_BL == Motor)
+  {
+    PitchCoef = MTR_BL_PITCH_COEF;
+    RollCoef = MTR_BL_ROLL_COEF;
+  }
+  else if(MOTOR_BR == Motor)
+  {
+    PitchCoef = MTR_BR_PITCH_COEF;
+    RollCoef = MTR_BR_ROLL_COEF;
+  }
+
+  CurMotorSpeed = BaseSpeed + (kRoll * RollCoef) + (kPitch * PitchCoef);
+  
+  mtr.SetMotorSpeed(Motor, CurMotorSpeed);
+  //Serial.print(CurMotorSpeed);
+}
 
 //*******************************************
 // below, deprecated code - depends on needs

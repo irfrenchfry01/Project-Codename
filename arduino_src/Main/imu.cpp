@@ -65,7 +65,7 @@ void Imu::InitImu(void)
   if(!accel.begin())
   {
     /* There was a problem detecting the ADXL345 ... check your connections */
-    Serial.println(F("Ooops, no LSM303 detected ... Check your wiring!"));
+    Serial.println(F("Ooops, no ADXL345 detected ... Check your wiring!"));
     while(1);
   }
   if(!mag.begin())

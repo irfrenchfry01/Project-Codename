@@ -1,5 +1,5 @@
-#include "Gps.h"
 #include "main.h"
+#include "Gps.h"
 #include <Wire.h>
 #include "imu.h"
 #include "kalman.h"
@@ -7,23 +7,19 @@
 #include "FlightCtrl.h"
 #include "Navigation.h"
 
-#define TEENSY_LED  (1u<<5u)  
- 
-//static uint8_t count = 0;
-
-Imu Imu;
+Imu ImuMain;
 motor motor;
 Navigation Nav;
 FlightCtrl Fc;
 kalman k;
 String inputString;
 
-void LedInit(void)
-{
-  PORTC_PCR5 = PORT_PCR_MUX(0x1); //digital GPIO mode?
-  GPIOC_PDDR = TEENSY_LED;
-  GPIOC_PSOR = TEENSY_LED;
-}
+/*
+ * inc/dec motor speed
+ * pitch
+ * testing harness
+ * 
+ */
 
 void TimerInit(void)
 {
@@ -43,76 +39,93 @@ void TimerInit(void)
   uint8_t TOIE = 6;
   uint8_t CMOD = 3;
   uint8_t PS = 0;
-//  TPM1_SC |= (1<<TOIE) | (1<<CMOD) | (7<<PS);
-  
+  TPM1_SC |= (1<<TOIE) | (1<<CMOD) | (7<<PS);
 }
 
 void ToggleLed(void)
 {
-//  uint32_t PortC = GPIOC_PSOR;
-//  PortC = PortC | (1<<5);
-//  GPIOC_PTOR = PortC;
+  uint32_t PortC = GPIOC_PSOR;
+  PortC = PortC | (1<<5);
+  GPIOC_PTOR = PortC;
 }
 
 void GarrettSetup()
 { 
-  Serial.begin(38400);
+  //Serial.begin(38400);
+  Serial.begin(115200);
 
   LedInit();
   motor.InitMotorPins();
 
-  Imu.InitImu();
+  ImuMain.InitImu();
+
+  k.kalmanInit();
   
   delay(1000);
   //Imu.displaySensorDetails();
 }
 
- uint8_t temp = 35;
+uint8_t temp = 35;
+bool stopped = false;
+
+void MotorWorks() {
+  motor.SetMotorSpeed(MOTOR_FL, temp);
+  delay(2000);
+  motor.SetMotorSpeed(MOTOR_FL, 0);
+  
+  motor.SetMotorSpeed(MOTOR_FR, temp);
+  delay(2000);
+  motor.SetMotorSpeed(MOTOR_FR, 0);
+  
+  motor.SetMotorSpeed(MOTOR_BL, temp);
+  delay(2000);
+  motor.SetMotorSpeed(MOTOR_BL, 0);
+  
+  motor.SetMotorSpeed(MOTOR_BR, temp);
+  delay(2000);
+  motor.SetMotorSpeed(MOTOR_BR, 0);  
+}
 
 void GarrettLoop() {
-  //double Ax, Ay, Az = 0;    //in m/s^2
-  //double RollDeg, PitchDeg = 0;   //in degrees
-  //double GxRaw = 0;         //in rad/s
-  //double GxDegPerSec = 0;            //in deg/s
-  //float kRoll = 0;
+  double RollDeg, PitchDeg = 0;   //in degrees
+  double GxDegPerSec, GyDegPerSec = 0;         //in deg/s
+  float kRoll, kPitch = 0;
   
-  delay(1000);
+  delay(1);
   ToggleLed();
 
-  motor.SetMotorSpeed(MOTOR_FL, temp);
-  motor.SetMotorSpeed(MOTOR_FR, temp);
-  motor.SetMotorSpeed(MOTOR_BL, temp);
-  motor.SetMotorSpeed(MOTOR_BR, temp);
- 
   //Imu.ReadAndPrintImuData();
-  /*  //commented out for motor test
-  Ax = Imu.GetAx();
-  Ay = Imu.GetAy();
-  Az = Imu.GetAz();
- */
+ 
   /*Serial.print("Ay: "); Serial.print(Ay); Serial.println(" "); */
   /*Serial.print("Az: "); Serial.print(Az); Serial.println(" "); */
 
-  /*  //commented out for motor test
-  RollDeg = Fc.CalcRoll(Ax, Ay, Az);
-  PitchDeg = Fc.CalcPitch(Ax, Ay, Az);
+  RollDeg = Fc.CalcRoll();
+  PitchDeg = Fc.CalcPitch();
 
-  Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
-  Serial.print("   Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
+  //Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
+  //Serial.print("Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
 
-  GxRaw = Imu.GetGx();
-  GxDegPerSec = Fc.GetGx(GxRaw);
+  GxDegPerSec = Fc.GetGx();
+  GyDegPerSec = Fc.GetGy();
   //Serial.print("GxDegPerSec: "); Serial.print(GxDegPerSec); Serial.println(" ");
 
   // angle in degrees, rate in degrees per second, delta in seconds
   //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
-  kRoll = k.GetAngle(RollDeg, GxDegPerSec, 1);
-  Serial.print(" kRoll: "); Serial.print(kRoll); Serial.println(" ");
-  */
+  kRoll = k.GetRollAngle(RollDeg, GxDegPerSec, 0.001);
 
-  /*  //commented out for motor test
-  count++;
-  */
+  kPitch = k.GetPitchAngle(PitchDeg, GyDegPerSec, 0.001);
+  //Serial.print("kPitch: "); Serial.print(kPitch); Serial.println(" "); Serial.println(" ");
+
+
+
+  if(stopped == false)
+  {
+    Fc.CalcMSpeed(MOTOR_FL, kRoll, kPitch);
+    //Fc.CalcMSpeed(MOTOR_FR, 0, kPitch);
+    //Fc.CalcMSpeed(MOTOR_BL, 0, kPitch);
+    //Fc.CalcMSpeed(MOTOR_BR, 0, kPitch);
+  }
+
 }
 
 void BrandonSetup()
@@ -160,6 +173,8 @@ void parseCommand(String inputCommand)
     }
   }
 
+  Serial.print("Inside parse command function..."); 
+
   //Add Coordinate requires that the coordinates being passed in are in Degrees Decimal format
   if(commandType.equals("ADDCOORD"))
   {
@@ -169,7 +184,12 @@ void parseCommand(String inputCommand)
   }
   else if(commandType.equals("BEGNPLAN"))
   {
-    
+   
+  }
+  else if(commandType.equals("STOPMOTR"))
+  {
+    motor.EmergencyMotorOff();
+    stopped = true;
   }
   
 }
@@ -190,12 +210,12 @@ void serialEvent()
 }
 
 void setup() {
-  //GarrettSetup();
-  BrandonSetup();
+  GarrettSetup();
+  //BrandonSetup();
 }
 
 void loop() {
-  //GarrettLoop(); 
-  BrandonLoop(); 
+  GarrettLoop(); 
+  //BrandonLoop(); 
 }
 

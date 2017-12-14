@@ -4,39 +4,74 @@
  * Description: Kalman filter.
  */
 
-#ifndef kalman_h
-#define kalman_h
+#ifndef KALMAN_H
+#define KALMAN_H
 
 class kalman{
   public:
-    kalman();
-
+    void kalmanInit();
+    /*
+     * functions below for roll angle
+     */
     // angle in degrees, rate in degrees per second, delta time in seconds
-    float GetAngle(float NewAngle, float NewRate, float Dt);
+    float GetRollAngle(float NewAngle, float NewRate, float Dt);
 
-    void SetAngle(float angle); // use to set angle, this should be set as the starting angle
-    float GetRate();            // return the unbiased rate
+    void SetRollAngle(float angle); // use to set angle, this should be set as the starting angle
+    float GetRollRate();            // return the unbiased rate
   
     // use to tune the Kalman filter
-    void SetQAngle(float Q_angle);
-    void SetQBias(float Q_bias);
-    void SetRMeasure(float R_measure);
+    void SetQAngleRoll(float Q_angle);
+    void SetQBiasRoll(float Q_bias);
+    void SetRMeasureRoll(float R_measure);
 
-    float GetQAngle();
-    float GetQBias();
-    float GetRMeasure();
+    float GetQAngleRoll();
+    float GetQBiasRoll();
+    float GetRMeasureRoll();
+
+    /*
+     * functions below for pitch angle
+     */
+    // angle in degrees, rate in degrees per second, delta time in seconds
+    float GetPitchAngle(float NewAngle, float NewRate, float Dt);
+
+    void SetPitchAngle(float angle); // use to set angle, this should be set as the starting angle
+    float GetPitchRate();            // return the unbiased rate
+  
+    // use to tune the Kalman filter
+    void SetQAnglePitch(float Q_angle);
+    void SetQBiasPitch(float Q_bias);
+    void SetRMeasurePitch(float R_measure);
+
+    float GetQAnglePitch();
+    float GetQBiasPitch();
+    float GetRMeasurePitch();
 
   private:
-    // kalman filter variables
-    float Q_angle;    // process noise variance for the accelerometer
-    float Q_bias;     // process noise variance for the gyro bias
-    float R_measure;  // measurement noise variance - this is actually the variance of the measurement noise
+    /* 
+     * kalman filter variables - roll 
+     */
+    float QAngleRoll;    // process noise variance for the accelerometer
+    float QBiasRoll;     // process noise variance for the gyro bias
+    float RMeasureRoll;  // measurement noise variance - this is actually the variance of the measurement noise
 
-    float angle;    // the angle calculated by the kalman filter - part of the 2x1 state vector
-    float bias;     // the gyro bias calculated by the Kalman filter - part of the 2x1 state vector 
-    float rate;     // unbiased rate calculated from the rate and the calculated bias - you have to call GetAngle to update the rate
+    float RollAngle;    // the angle calculated by the kalman filter - part of the 2x1 state vector
+    float RollBias;     // the gyro bias calculated by the Kalman filter - part of the 2x1 state vector 
+    float RollRate;     // unbiased rate calculated from the rate and the calculated bias - you have to call GetAngle to update the rate
 
-    float P[2][2];  // error covariance matrix - this is a 2x2 matrix
+    float PRoll[2][2];  // error covariance matrix - this is a 2x2 matrix
+
+    /* 
+     * kalman filter variables - pitch 
+     */
+    float QAnglePitch;    // process noise variance for the accelerometer
+    float QBiasPitch;     // process noise variance for the gyro bias
+    float RMeasurePitch;  // measurement noise variance - this is actually the variance of the measurement noise
+
+    float PitchAngle;    // the angle calculated by the kalman filter - part of the 2x1 state vector
+    float PitchBias;     // the gyro bias calculated by the Kalman filter - part of the 2x1 state vector 
+    float PitchRate;     // unbiased rate calculated from the rate and the calculated bias - you have to call GetAngle to update the rate
+
+    float PPitch[2][2];  // error covariance matrix - this is a 2x2 matrix
 };
 
 #endif

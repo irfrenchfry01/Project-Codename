@@ -11,8 +11,8 @@
 #include <Adafruit_L3GD20_U.h>
 #include <Adafruit_9DOF.h>
  */
-#ifndef imu_h
-#define imu_h
+#ifndef IMU_H
+#define IMU_H
 
 class Imu{
   public:

@@ -11,10 +11,25 @@
 
 #define MOTOR_OFF 0u
 
-// use motor speed coefficient to weight newer vs older motor speeds
-#define MOTOR_SPEED_AVG_CNT 3u     //note, add coefs if adding more to average
-//#define MOTOR_SPEED_COEF[MOTOR_SPEED_AVG_CNT] = { 0.8 1.0 1.2 } // oldest speed to newest
-#define MOTOR_SPEED_COEF 1 // oldest speed to newest
+//motor constants
+#define   MTR_BASE       50
+
+//Front Left (FL) motor constants
+#define   MTR_FL_ROLL_COEF  1   //positive
+#define   MTR_FL_PITCH_COEF 1   // TODO
+
+//Front Right (FR) motor constants
+#define   MTR_FR_ROLL_COEF  -1  //negative
+#define   MTR_FR_PITCH_COEF 1   // TODO
+
+//Back Left (BL) motor constants
+#define   MTR_BL_ROLL_COEF  1   //positive
+#define   MTR_BL_PITCH_COEF -1   // TODO
+
+//Back Left (BR) motor constants
+#define   MTR_BR_ROLL_COEF  -1  //negative
+#define   MTR_BR_PITCH_COEF -1   // TODO
+
 
 typedef enum _MotorId_t{
   MOTOR_FL = 2,   //front left motor
@@ -33,8 +48,6 @@ class motor {
   public:
     //setup PWM pins for motors
     void InitMotorPins(void);
-
-    uint8_t CalcMotorSpeed(MotorId_t Motor, uint8_t NewSpeed);
     
     //set motor speed
     MotorStatus_t SetMotorSpeed(MotorId_t Motor, uint8_t SpeedPercent);
@@ -45,8 +58,6 @@ class motor {
 
     //variable to track set motor speeds
     //note, these are not actual values as those will be calculated based on this array
-
-    
 };
 
 #endif
