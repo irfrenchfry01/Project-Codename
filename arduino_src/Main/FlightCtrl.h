@@ -16,6 +16,7 @@
 class FlightCtrl
 {
   public:
+    void IncOrDecUserSpeed(bool Inc);
     double CalcRoll(void);
     double CalcPitch(void);
     double GetRoll(void);

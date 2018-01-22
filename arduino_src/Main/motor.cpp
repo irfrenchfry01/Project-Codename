@@ -44,6 +44,45 @@ void motor::InitMotorPins(void)
   Serial.println("\nMotor initialization complete");
 }
 
+//to do weird reprogramming sequence, InitSpeed = 0, Speed < 180
+
+void motor::InitMotorPinsTest(void)
+{
+  uint8_t InitSpeed = 20;
+  uint8_t Speed = 0;
+
+  MotorFL.attach(MOTOR_FL);
+  MotorFR.attach(MOTOR_FR);
+  MotorBL.attach(MOTOR_BL);
+  MotorBR.attach(MOTOR_BR);
+
+  //Ramp speed sequence
+  for(Speed = InitSpeed; Speed < 150; Speed++)
+  {
+    SetMotorSpeed(MOTOR_FL, Speed);
+    SetMotorSpeed(MOTOR_FR, Speed);
+    SetMotorSpeed(MOTOR_BL, Speed);
+    SetMotorSpeed(MOTOR_BR, Speed);
+    delay(100);
+  }
+
+  //Set speed low, this also sets motors to off
+  SetMotorSpeed(MOTOR_FL, InitSpeed);
+  SetMotorSpeed(MOTOR_FR, InitSpeed);
+  SetMotorSpeed(MOTOR_BL, InitSpeed);
+  SetMotorSpeed(MOTOR_BR, InitSpeed);
+
+  Serial.println("\nMotor initialization complete");
+}
+
+/**
+ * param[in] Speed    Values 0-180 to determine motor speed; 0 = max reverse, 180 = max forward, 90 = no movement
+ */
+void motor::TestServoWriteFunction(uint8_t Speed)
+{
+  //MotorFL.write(Speed);
+}
+
 /*
  *  @brief set PWM duty cycle for motor speed control
  *  

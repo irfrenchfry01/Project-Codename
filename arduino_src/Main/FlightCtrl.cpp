@@ -15,6 +15,46 @@ Imu Imu;
 //double pitch, roll;
 //double ax, ay, az;  //accelerometer input
 
+int8_t gUserCtrlSpeed = 0;
+#define MAX_USER_INPUT 40
+/*
+ * @brief Increment / decrement user input motor speed
+ * 
+ * @param[in] Inc true=increment speed, false=decrement speed
+ */
+void FlightCtrl::IncOrDecUserSpeed(bool Inc)
+{
+  static int8_t Speed = 0;
+
+  if(true == Inc)
+  {
+    if(MAX_USER_INPUT < Speed)
+    {
+      Speed = MAX_USER_INPUT;
+    }
+    else
+    {
+      Speed++;
+    }
+  }
+  else
+  {
+    if(-MAX_USER_INPUT > Speed)
+    {
+      Speed = -MAX_USER_INPUT;
+    }
+    else
+    {
+      Speed--;
+    }
+  }
+  
+  if((MAX_USER_INPUT > Speed) && (-MAX_USER_INPUT < Speed))
+  {
+    gUserCtrlSpeed = Speed; 
+  }
+}
+
 /**
 * @brief calculate roll using accelerometer data
 * 
@@ -141,8 +181,8 @@ void FlightCtrl::CalcMSpeed(MotorId_t Motor, int32_t kRoll, int32_t kPitch)
 {
   uint8_t CurMotorSpeed = 0;
   uint8_t BaseSpeed = 0;
-  int8_t PitchCoef = 0;
-  int8_t RollCoef = 0;
+  float PitchCoef = 0;
+  float RollCoef = 0;
 
   BaseSpeed = MTR_BASE;
 
@@ -167,7 +207,12 @@ void FlightCtrl::CalcMSpeed(MotorId_t Motor, int32_t kRoll, int32_t kPitch)
     RollCoef = MTR_BR_ROLL_COEF;
   }
 
-  CurMotorSpeed = BaseSpeed + (kRoll * RollCoef) + (kPitch * PitchCoef);
+  // use below for gUserCtrl speed
+  CurMotorSpeed = BaseSpeed + gUserCtrlSpeed + (kRoll * RollCoef) + (kPitch * PitchCoef);
+
+  // w/o user speed addition
+  //CurMotorSpeed = BaseSpeed + (kRoll * RollCoef) + (kPitch * PitchCoef);
+  //Serial.print("CurMotorSpeed: "); Serial.println(CurMotorSpeed);
   
   mtr.SetMotorSpeed(Motor, CurMotorSpeed);
   //Serial.print(CurMotorSpeed);

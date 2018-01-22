@@ -55,7 +55,8 @@ void GarrettSetup()
   Serial.begin(115200);
 
   LedInit();
-  motor.InitMotorPins();
+  //motor.InitMotorPins();
+  motor.InitMotorPinsTest();
 
   ImuMain.InitImu();
 
@@ -101,6 +102,7 @@ void GarrettLoop() {
 
   RollDeg = Fc.CalcRoll();
   PitchDeg = Fc.CalcPitch();
+  Serial.print(RollDeg); Serial.print(" ");
 
   //Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
   //Serial.print("Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
@@ -112,20 +114,23 @@ void GarrettLoop() {
   // angle in degrees, rate in degrees per second, delta in seconds
   //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
   kRoll = k.GetRollAngle(RollDeg, GxDegPerSec, 0.001);
+  Serial.print(kRoll); Serial.print(" ");
+
+  //bounds for the plotter
+  Serial.print(-80); Serial.print(" ");
+  Serial.println(80);
 
   kPitch = k.GetPitchAngle(PitchDeg, GyDegPerSec, 0.001);
   //Serial.print("kPitch: "); Serial.print(kPitch); Serial.println(" "); Serial.println(" ");
 
-
-
   if(stopped == false)
   {
-    Fc.CalcMSpeed(MOTOR_FL, kRoll, kPitch);
-    //Fc.CalcMSpeed(MOTOR_FR, 0, kPitch);
-    //Fc.CalcMSpeed(MOTOR_BL, 0, kPitch);
-    //Fc.CalcMSpeed(MOTOR_BR, 0, kPitch);
+    //uncomment code below after servo write test
+    Fc.CalcMSpeed(MOTOR_FL, kRoll, 0);
+    Fc.CalcMSpeed(MOTOR_FR, kRoll, 0);
+    Fc.CalcMSpeed(MOTOR_BL, kRoll, 0);
+    Fc.CalcMSpeed(MOTOR_BR, kRoll, 0);
   }
-
 }
 
 void BrandonSetup()
@@ -173,8 +178,6 @@ void parseCommand(String inputCommand)
     }
   }
 
-  Serial.print("Inside parse command function..."); 
-
   //Add Coordinate requires that the coordinates being passed in are in Degrees Decimal format
   if(commandType.equals("ADDCOORD"))
   {
@@ -186,12 +189,22 @@ void parseCommand(String inputCommand)
   {
    
   }
-  else if(commandType.equals("STOPMOTR"))
+  else if(commandType.equals("STOP"))
   {
+    Serial.print("STOPMOTR requested");
     motor.EmergencyMotorOff();
     stopped = true;
   }
-  
+  else if(commandType.equals("k"))
+  {
+    Serial.println("Increase speed");
+    Fc.IncOrDecUserSpeed(true);
+  }  
+  else if(commandType.equals("j"))
+  {
+    Serial.println("Decrease speed");
+    Fc.IncOrDecUserSpeed(false);
+  }  
 }
 
 void serialEvent()
