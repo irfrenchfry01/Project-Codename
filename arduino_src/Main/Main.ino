@@ -7,6 +7,12 @@
 #include "FlightCtrl.h"
 #include "Navigation.h"
 
+#define SENSOR_POLL_INTERVAL  0.0001  //unit: seconds
+#define MICROSEC_IN_SEC       1000000 //unit: microseconds
+
+IntervalTimer SwTimer1;
+IntervalTimer SwTimer2;
+
 Imu ImuMain;
 motor motor;
 Navigation Nav;
@@ -14,33 +20,6 @@ FlightCtrl Fc;
 kalman k;
 String inputString;
 
-/*
- * inc/dec motor speed
- * pitch
- * testing harness
- * 
- */
-
-void TimerInit(void)
-{
-  //turn on PIT
-  //PIT_MCR = 0x00;
-
-  //load value
-  //LDVAL = (period/clock period) - 1
-  //clock period = 20 ns
-  //PIT_LDVAL3 = 0x02FAF07F;
-  //PIT_TCTRL3 = (1<<1);
-  //PIT_TCTRL3 |= (1<<0);
-
-  /* --------- */
-  //ignore above
-  //setup for TPM1 (Timer / Pulse Width)
-  uint8_t TOIE = 6;
-  uint8_t CMOD = 3;
-  uint8_t PS = 0;
-  TPM1_SC |= (1<<TOIE) | (1<<CMOD) | (7<<PS);
-}
 
 void ToggleLed(void)
 {
@@ -49,14 +28,32 @@ void ToggleLed(void)
   GPIOC_PTOR = PortC;
 }
 
+double gRollDeg, gPitchDeg = 0;         //in degrees
+double gGxDegPerSec, gGyDegPerSec = 0;  //in deg/s
+float gkRoll = 0;
+
+
+/**
+ * @brief Update kalman calculations on set timer interval
+ */
+void CalcKalmanData(void)
+{
+  /* Calc roll with Kalman filter */
+  // angle in degrees, rate in degrees per second, delta in seconds
+  //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
+  gkRoll = k.GetRollAngle(gRollDeg, gGxDegPerSec, SENSOR_POLL_INTERVAL);
+  
+}
+
+/**
+ * @brief Initialization and setup before loop begins
+ */
 void GarrettSetup()
 { 
-  //Serial.begin(38400);
   Serial.begin(115200);
 
   LedInit();
-  //motor.InitMotorPins();
-  motor.InitMotorPinsTest();
+  motor.InitMotorPins();
 
   ImuMain.InitImu();
 
@@ -64,6 +61,14 @@ void GarrettSetup()
   
   delay(1000);
   //Imu.displaySensorDetails();
+
+  //setup software timer 1 to blink LED
+  SwTimer1.begin(ToggleLed, 1000000);  
+  SwTimer1.priority(200);   //value 0-255, lower value = higher priority
+
+  //setup software tiemr 2 to collect sensor data
+  SwTimer2.begin(CalcKalmanData, (SENSOR_POLL_INTERVAL * MICROSEC_IN_SEC));
+  SwTimer2.priority(25);
 }
 
 uint8_t temp = 35;
@@ -91,41 +96,43 @@ void GarrettLoop() {
   double RollDeg, PitchDeg = 0;   //in degrees
   double GxDegPerSec, GyDegPerSec = 0;         //in deg/s
   float kRoll, kPitch = 0;
-  
-  delay(1);
-  ToggleLed();
 
-  //Imu.ReadAndPrintImuData();
- 
-  /*Serial.print("Ay: "); Serial.print(Ay); Serial.println(" "); */
-  /*Serial.print("Az: "); Serial.print(Az); Serial.println(" "); */
-
+  /* Get roll and pitch from accelerometer */
   RollDeg = Fc.CalcRoll();
   PitchDeg = Fc.CalcPitch();
   Serial.print(RollDeg); Serial.print(" ");
 
-  //Serial.print("Raw RollDeg: "); Serial.print(RollDeg); Serial.println(" ");
-  //Serial.print("Raw PitchDeg: "); Serial.print(PitchDeg); Serial.println(" ");
-
+  /* Get gyro data in x and y */
   GxDegPerSec = Fc.GetGx();
   GyDegPerSec = Fc.GetGy();
-  //Serial.print("GxDegPerSec: "); Serial.print(GxDegPerSec); Serial.println(" ");
+  Serial.print(GxDegPerSec); Serial.print(" ");
 
-  // angle in degrees, rate in degrees per second, delta in seconds
-  //float kalman::GetAngle(float NewAngle, float NewRate, float Dt)
-  kRoll = k.GetRollAngle(RollDeg, GxDegPerSec, 0.001);
+  /* Calc roll using Kalman filter */
+  //kRoll = k.GetRollAngle(RollDeg, GxDegPerSec, SENSOR_POLL_INTERVAL);
+  noInterrupts(); //disable interrupts while updating globals
+  /* Update globals for use in kalman timer call */
+  gRollDeg = RollDeg;
+  gGxDegPerSec = GxDegPerSec;
+  
+  kRoll = gkRoll;
+  interrupts();   //enable interrupts 
+
+  //COMMENTED OUT COMP IN ROLL
+  //kRoll = kRoll - 3;
   Serial.print(kRoll); Serial.print(" ");
 
   //bounds for the plotter
-  Serial.print(-80); Serial.print(" ");
-  Serial.println(80);
+  //Serial.print(-10); Serial.print(" ");
+  Serial.println(0);
 
-  kPitch = k.GetPitchAngle(PitchDeg, GyDegPerSec, 0.001);
+  /* Calc pitch using Kalman filter */
+  kPitch = k.GetPitchAngle(PitchDeg, GyDegPerSec, SENSOR_POLL_INTERVAL);
   //Serial.print("kPitch: "); Serial.print(kPitch); Serial.println(" "); Serial.println(" ");
 
   if(stopped == false)
   {
-    //uncomment code below after servo write test
+    //uncomment code below to spin motors
+    //motor, kRoll, kPitch
     Fc.CalcMSpeed(MOTOR_FL, kRoll, 0);
     Fc.CalcMSpeed(MOTOR_FR, kRoll, 0);
     Fc.CalcMSpeed(MOTOR_BL, kRoll, 0);
@@ -204,7 +211,19 @@ void parseCommand(String inputCommand)
   {
     Serial.println("Decrease speed");
     Fc.IncOrDecUserSpeed(false);
-  }  
+  }
+  else if(commandType.equals("ka"))
+  {
+      k.SetQAngleRoll(parameters[0].toFloat());
+  }
+  else if(commandType.equals("kb"))
+  {
+      k.SetQBiasRoll(parameters[0].toFloat());   
+  }
+  else if(commandType.equals("km"))
+  {
+      k.SetRMeasureRoll(parameters[0].toFloat());
+  }
 }
 
 void serialEvent()

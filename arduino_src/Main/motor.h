@@ -15,20 +15,20 @@
 #define   MTR_BASE       40
 
 //Front Left (FL) motor constants
-#define   MTR_FL_ROLL_COEF  0.5   //positive
-#define   MTR_FL_PITCH_COEF 0.5   // TODO
+#define   MTR_FL_ROLL_COEF  0.25   //positive
+#define   MTR_FL_PITCH_COEF 0.25   // TODO
 
 //Front Right (FR) motor constants
-#define   MTR_FR_ROLL_COEF  -0.5  //negative
-#define   MTR_FR_PITCH_COEF 0.5   // TODO
+#define   MTR_FR_ROLL_COEF  -0.25  //negative
+#define   MTR_FR_PITCH_COEF 0.25   // TODO
 
 //Back Left (BL) motor constants
-#define   MTR_BL_ROLL_COEF  0.5   //positive
-#define   MTR_BL_PITCH_COEF -0.5   // TODO
+#define   MTR_BL_ROLL_COEF  0.25   //positive
+#define   MTR_BL_PITCH_COEF -0.25   // TODO
 
 //Back Left (BR) motor constants
-#define   MTR_BR_ROLL_COEF  -0.5  //negative
-#define   MTR_BR_PITCH_COEF -0.5   // TODO
+#define   MTR_BR_ROLL_COEF  -0.25  //negative
+#define   MTR_BR_PITCH_COEF -0.25   // TODO
 
 
 typedef enum _MotorId_t{

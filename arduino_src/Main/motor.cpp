@@ -17,7 +17,7 @@ Servo MotorBR;   // MOTOR_BR, pin 5
  */
 void motor::InitMotorPins(void)
 {
-  uint8_t InitSpeed = 30;
+  uint8_t InitSpeed = 20;
   uint8_t Speed = 0;
 
   MotorFL.attach(MOTOR_FL);
@@ -26,13 +26,13 @@ void motor::InitMotorPins(void)
   MotorBR.attach(MOTOR_BR);
 
   //Ramp speed sequence
-  for(Speed = InitSpeed; Speed < 40; Speed++)
+  for(Speed = InitSpeed; Speed < 150; Speed++)
   {
     SetMotorSpeed(MOTOR_FL, Speed);
     SetMotorSpeed(MOTOR_FR, Speed);
     SetMotorSpeed(MOTOR_BL, Speed);
     SetMotorSpeed(MOTOR_BR, Speed);
-    delay(1000);
+    delay(100);
   }
 
   //Set speed low, this also sets motors to off
@@ -48,7 +48,7 @@ void motor::InitMotorPins(void)
 
 void motor::InitMotorPinsTest(void)
 {
-  uint8_t InitSpeed = 20;
+  uint8_t InitSpeed = 0;
   uint8_t Speed = 0;
 
   MotorFL.attach(MOTOR_FL);

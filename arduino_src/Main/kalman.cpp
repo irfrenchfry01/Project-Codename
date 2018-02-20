@@ -15,8 +15,8 @@
 void kalman::kalmanInit() {
   //variables for roll
   //we set the variables like so, there can also be tuned by the user
-  QAngleRoll = 0.01f;    //0.001
-  QBiasRoll  = 0.03f;    //0.003
+  QAngleRoll = 0.001f;    //0.001
+  QBiasRoll  = 0.003f;    //0.003
   RMeasureRoll = 0.03f;   //0.03
 
   RollAngle = 0.0f;   // reset the angle
